@@ -1,0 +1,2500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="J. Fletcher Art — Fine Art Photography Prints. Museum-quality photographic prints designed to last generations.">
+<meta name="keywords" content="fine art photography, limited edition prints, museum quality prints, J Fletcher Art">
+<title>J. Fletcher Art — Fine Art Photography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;color:#1a1a1a;background:#fff;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+ul{list-style:none}
+input,textarea,select{font-family:inherit}
+
+/* ===== CSS VARIABLES ===== */
+:root{
+  --black:#0a0a0a;
+  --white:#ffffff;
+  --off-white:#f8f7f5;
+  --light-grey:#e8e6e2;
+  --mid-grey:#9a9590;
+  --dark-grey:#4a4744;
+  --accent:#c9a96e;
+  --accent-dark:#a8833f;
+  --font-display:'Cormorant Garamond',serif;
+  --font-body:'Inter',sans-serif;
+  --header-h:56px;
+  --announcement-h:36px;
+  --transition:0.3s ease;
+}
+
+/* ===== ANNOUNCEMENT BAR ===== */
+.announcement-bar{
+  background:var(--black);color:var(--white);
+  height:var(--announcement-h);display:flex;align-items:center;justify-content:center;
+  font-size:12px;letter-spacing:0.12em;text-transform:uppercase;
+  position:relative;
+}
+.announcement-bar .ann-nav{position:absolute;display:flex;gap:24px;right:16px;top:50%;transform:translateY(-50%)}
+.announcement-bar .ann-nav button{color:var(--white);font-size:14px;opacity:0.6;transition:opacity var(--transition)}
+.announcement-bar .ann-nav button:hover{opacity:1}
+.announcement-text{display:flex;gap:32px;align-items:center}
+.ann-dot{width:4px;height:4px;background:var(--mid-grey);border-radius:50%}
+
+/* ===== HEADER ===== */
+.site-header{
+  position:sticky;top:0;z-index:1000;
+  background:var(--white);
+  border-bottom:1px solid var(--light-grey);
+  height:var(--header-h);
+}
+.header-inner{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;height:100%;
+  padding:0 32px;max-width:1440px;margin:0 auto;
+}
+.header-nav{display:flex;gap:24px;align-items:center}
+.header-nav a{
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--dark-grey);transition:color var(--transition);
+  position:relative;padding-bottom:2px;
+}
+.header-nav a::after{
+  content:'';position:absolute;bottom:0;left:0;width:0;height:1px;
+  background:var(--black);transition:width var(--transition);
+}
+.header-nav a:hover,
+.header-nav a.active{color:var(--black)}
+.header-nav a:hover::after,
+.header-nav a.active::after{width:100%}
+.logo{text-align:center;cursor:pointer}
+.logo-brand{font-family:var(--font-display);font-size:22px;font-weight:400;letter-spacing:0.08em;line-height:1.1}
+.logo-sub{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--mid-grey);margin-top:2px}
+.header-actions{display:flex;justify-content:flex-end;align-items:center;gap:20px}
+.header-actions button{
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dark-grey);
+  transition:color var(--transition);
+}
+.header-actions button:hover{color:var(--black)}
+.header-actions .cart-btn .cart-count{
+  background:var(--black);color:var(--white);
+  width:16px;height:16px;border-radius:50%;font-size:9px;
+  display:flex;align-items:center;justify-content:center;margin-left:2px;
+}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--black);transition:var(--transition)}
+
+/* ===== MOBILE MENU ===== */
+.mobile-menu{
+  display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  background:var(--white);z-index:2000;padding:80px 32px 40px;
+  flex-direction:column;gap:32px;overflow-y:auto;
+  transform:translateX(-100%);transition:transform 0.4s ease;
+}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu-close{
+  position:absolute;top:16px;right:24px;font-size:24px;
+  background:none;border:none;cursor:pointer;color:var(--black);
+}
+.mobile-menu a{
+  font-family:var(--font-display);font-size:28px;font-weight:300;
+  color:var(--black);border-bottom:1px solid var(--light-grey);padding-bottom:16px;
+  display:block;
+}
+.mobile-menu-actions{display:flex;gap:24px;margin-top:auto}
+.mobile-menu-actions button{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dark-grey)}
+
+/* ===== PAGE SYSTEM ===== */
+.page{display:none}
+.page.active{display:block}
+
+/* ===== HERO ===== */
+.hero{position:relative;height:calc(100vh - var(--announcement-h) - var(--header-h));min-height:520px;overflow:hidden}
+.hero-slides{position:relative;width:100%;height:100%}
+.hero-slide{
+  position:absolute;inset:0;opacity:0;transition:opacity 1s ease;
+  background-size:cover;background-position:center;
+}
+.hero-slide.active{opacity:1}
+.hero-slide-1{background-image:url('https://i.ibb.co.com/rRKJzb1W/28.png')}
+.hero-slide-2{background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=85')}
+.hero-slide-3{background-image:url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1920&q=85')}
+
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.1) 70%)}
+.hero-content{
+  position:absolute;bottom:80px;left:60px;
+  color:var(--white);max-width:580px;
+}
+.hero-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;opacity:0.7;margin-bottom:20px}
+.hero-title{
+  font-family:var(--font-display);font-size:clamp(42px,5.5vw,76px);
+  font-weight:300;line-height:1.05;letter-spacing:-0.01em;
+  margin-bottom:20px;
+}
+.hero-subtitle{font-size:14px;line-height:1.7;opacity:0.85;margin-bottom:36px;max-width:360px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:13px 28px;background:var(--white);color:var(--black);
+  font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  border:1px solid var(--white);transition:all var(--transition);
+}
+.btn-primary:hover{background:transparent;color:var(--white)}
+.btn-outline{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:13px 28px;background:transparent;color:var(--white);
+  font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  border:1px solid rgba(255,255,255,0.6);transition:all var(--transition);
+}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.1)}
+.hero-dots{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:flex;gap:8px;
+}
+.hero-dot{
+  width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);
+  border:none;cursor:pointer;transition:background var(--transition);padding:0;
+}
+.hero-dot.active{background:var(--white)}
+.hero-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(0,0,0,0.3);color:var(--white);
+  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+  font-size:18px;transition:background var(--transition);cursor:pointer;border:none;
+}
+.hero-arrow:hover{background:rgba(0,0,0,0.6)}
+.hero-prev{left:16px}
+.hero-next{right:16px}
+
+/* ===== ICON PANEL ===== */
+.icon-panel{
+  background:var(--white);
+  border-bottom:1px solid var(--light-grey);
+  padding:28px 0;
+}
+.icon-panel-inner{
+  max-width:1200px;margin:0 auto;padding:0 32px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+}
+.icon-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:0 24px;border-right:1px solid var(--light-grey);
+}
+.icon-item:first-child{padding-left:0}
+.icon-item:last-child{border-right:none}
+.icon-svg{width:36px;height:36px;flex-shrink:0;color:var(--dark-grey)}
+.icon-text h4{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:4px}
+.icon-text p{font-size:11px;color:var(--mid-grey);line-height:1.5}
+
+/* ===== SECTION HEADERS ===== */
+.section-header{
+  display:flex;align-items:baseline;justify-content:space-between;
+  margin-bottom:28px;
+}
+.section-title{
+  font-family:var(--font-display);font-size:28px;font-weight:400;letter-spacing:0.02em;
+}
+.section-link{
+  font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--dark-grey);display:flex;align-items:center;gap:6px;
+  transition:color var(--transition);
+}
+.section-link:hover{color:var(--black)}
+.section-link::after{content:'→'}
+.centered-title{
+  font-family:var(--font-display);font-size:28px;font-weight:400;
+  letter-spacing:0.06em;text-align:center;text-transform:uppercase;
+  margin-bottom:40px;
+}
+
+/* ===== COLLECTIONS GRID ===== */
+.collections-section{padding:60px 0;max-width:1440px;margin:0 auto;padding-left:32px;padding-right:32px}
+.collections-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:4px;
+}
+.collection-tile{
+  position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer;
+}
+.collection-tile img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.6s ease;
+}
+.collection-tile:hover img{transform:scale(1.04)}
+.collection-tile-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(0,0,0,0.6) 0%,rgba(0,0,0,0) 50%);
+}
+.collection-tile-info{
+  position:absolute;bottom:0;left:0;right:0;padding:20px 16px;color:var(--white);
+}
+.collection-tile-name{
+  font-family:var(--font-display);font-size:18px;font-weight:400;
+  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;
+}
+.collection-tile-cta{
+  font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
+  opacity:0.75;display:flex;align-items:center;gap:4px;
+}
+
+/* ===== PRODUCT GRID ===== */
+.products-section{padding:60px 0;max-width:1440px;margin:0 auto;padding-left:32px;padding-right:32px}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.product-card{cursor:pointer}
+.product-card-img{position:relative;overflow:hidden;aspect-ratio:1;background:var(--off-white);margin-bottom:12px}
+.product-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+.product-card:hover .product-card-img img{transform:scale(1.03)}
+.product-card-wishlist{
+  position:absolute;top:12px;right:12px;
+  width:32px;height:32px;background:rgba(255,255,255,0.9);
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;opacity:0;transition:opacity var(--transition);
+  border:none;cursor:pointer;
+}
+.product-card:hover .product-card-wishlist{opacity:1}
+.product-card-wishlist.wishlisted{opacity:1;background:var(--black)}
+.product-card-wishlist.wishlisted svg{stroke:var(--white)}
+.product-edition{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:4px}
+.product-name{font-size:14px;font-weight:500;letter-spacing:0.03em;margin-bottom:4px}
+.product-price{font-size:13px;color:var(--dark-grey)}
+.product-card-btn{
+  display:block;width:100%;margin-top:10px;padding:10px;
+  background:var(--black);color:var(--white);
+  font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
+  text-align:center;transition:background var(--transition);border:none;cursor:pointer;
+}
+.product-card-btn:hover{background:var(--dark-grey)}
+
+/* ===== ARTIST SECTION ===== */
+.artist-section{display:grid;grid-template-columns:1fr 1fr}
+.artist-text{
+  background:var(--black);color:var(--white);
+  padding:80px 60px;display:flex;flex-direction:column;justify-content:center;
+}
+.artist-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;opacity:0.5;margin-bottom:20px}
+.artist-title{font-family:var(--font-display);font-size:clamp(32px,3vw,48px);font-weight:300;line-height:1.2;margin-bottom:24px}
+.artist-body{font-size:13px;line-height:1.8;opacity:0.75;margin-bottom:36px}
+.btn-white{
+  display:inline-flex;align-items:center;padding:12px 28px;
+  border:1px solid rgba(255,255,255,0.5);color:var(--white);
+  font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  transition:all var(--transition);width:fit-content;cursor:pointer;background:transparent;
+}
+.btn-white:hover{background:var(--white);color:var(--black)}
+.artist-image{overflow:hidden}
+.artist-image img{width:100%;height:100%;object-fit:cover;min-height:480px}
+
+/* ===== BESTSELLERS ===== */
+.bestsellers-section{padding:60px 0;max-width:1440px;margin:0 auto;padding-left:32px;padding-right:32px}
+.bestsellers-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+
+/* ===== BUNDLES ===== */
+.bundles-section{padding:60px 0;max-width:1440px;margin:0 auto;padding-left:32px;padding-right:32px}
+.bundles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.bundle-card{cursor:pointer}
+.bundle-card-imgs{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:16px}
+.bundle-card-imgs img{aspect-ratio:1;object-fit:cover;width:100%}
+.bundle-name{font-size:15px;font-weight:500;margin-bottom:4px}
+.bundle-count{font-size:12px;color:var(--mid-grey);margin-bottom:4px}
+.bundle-price{font-size:13px}
+.bundle-arrow{float:right;font-size:18px;color:var(--mid-grey)}
+
+/* ===== NEWSLETTER ===== */
+.newsletter-section{
+  background:var(--black);
+  padding:80px 32px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.newsletter-bg{
+  position:absolute;inset:0;
+  background-image:url('https://i.ibb.co.com/6RM3F6wK/13.jpg');
+  background-size:cover;background-position:center;opacity:0.8;
+}
+.newsletter-inner{position:relative;z-index:1;max-width:480px;margin:0 auto}
+.newsletter-title{
+  font-family:var(--font-display);font-size:36px;font-weight:300;color:var(--white);
+  margin-bottom:12px;letter-spacing:0.04em;
+}
+.newsletter-sub{font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:32px;line-height:1.6}
+.newsletter-form{display:flex;gap:0}
+.newsletter-form input{
+  flex:1;padding:14px 18px;background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);border-right:none;color:var(--white);
+  font-size:13px;outline:none;
+}
+.newsletter-form input::placeholder{color:rgba(255,255,255,0.4)}
+.newsletter-form input:focus{border-color:rgba(255,255,255,0.5)}
+.newsletter-form button{
+  padding:14px 24px;background:var(--white);color:var(--black);
+  font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  border:1px solid var(--white);cursor:pointer;transition:all var(--transition);
+}
+.newsletter-form button:hover{background:transparent;color:var(--white)}
+
+/* ===== FOOTER ===== */
+/*.site-footer{background:var(--black);color:var(--white);padding:60px 32px 40px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1.2fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-logo-brand{font-family:var(--font-display);font-size:20px;font-weight:400;letter-spacing:0.08em}
+.footer-logo-sub{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;opacity:0.4;margin-top:3px;margin-bottom:16px}
+.footer-tagline{font-size:12px;opacity:0.5;line-height:1.7;max-width:200px;margin-bottom:24px}
+.footer-social{display:flex;gap:16px}
+.footer-social a{
+  width:32px;height:32px;border:1px solid rgba(255,255,255,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;transition:all var(--transition);
+}
+.footer-social a:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+.footer-col h5{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:16px;opacity:0.5}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul a{font-size:12px;opacity:0.65;transition:opacity var(--transition)}
+.footer-col ul a:hover{opacity:1}
+.payment-icons{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.payment-icons img{height:24px;width:auto;opacity:0.8}
+.payment-badge{
+  background:rgba(255,255,255,0.1);border-radius:4px;
+  padding:3px 8px;font-size:10px;letter-spacing:0.06em;
+}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:24px;font-size:11px;opacity:0.4;flex-wrap:wrap;gap:12px;
+}
+*/
+
+footer {
+    background: var(--black);
+    padding: 60px 32px 32px;
+    color: rgba(255,255,255,0.6);
+  }
+  .footer-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr 1fr 180px;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+  .footer-brand {}
+  .footer-logo-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .footer-logo-sub {
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 16px;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .footer-social {
+    display: flex;
+    gap: 12px;
+  }
+  .footer-social a {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+    color: rgba(255,255,255,0.55);
+  }
+  .footer-social a:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+  .footer-social svg { width: 14px; height: 14px; }
+  .footer-col h5 {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .footer-col ul { display: flex; flex-direction: column; gap: 8px; }
+  .footer-col ul li a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    transition: color var(--transition);
+    line-height: 1.4;
+  }
+  .footer-col ul li a:hover { color: rgba(255,255,255,0.85); }
+  .footer-payments h5 {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .payment-logos {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .payment-logo {
+    background: rgba(255,255,255,0.9);
+    border-radius: 4px;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    min-width: 44px;
+  }
+  .payment-logo svg { height: 16px; width: auto; }
+  /* Visa */
+  .payment-logo.visa { background: #1a1f71; }
+  /* MC */
+  .payment-logo.mc { background: #fff; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-bottom p { font-size: 11px; color: rgba(255,255,255,0.3); }
+  .footer-bottom-links { display: flex; gap: 20px; }
+  .footer-bottom-links a { font-size: 11px; color: rgba(255,255,255,0.3); transition: color var(--transition); }
+  .footer-bottom-links a:hover { color: rgba(255,255,255,0.6); }
+
+  /* =============================================
+     RESPONSIVE
+  ============================================= */
+  @media (max-width: 1200px) {
+    .collections-grid { grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .products-grid-6 { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+    .footer-payments { grid-column: 1; }
+  }
+  @media (max-width: 1024px) {
+    .header-inner { padding: 0 20px; }
+    .nav-left { gap: 16px; }
+    .hero-content { padding: 0 48px; }
+    .feature-icons-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .collections-grid { grid-template-columns: repeat(3, 1fr); }
+    .collections-grid .collection-card:nth-child(4),
+    .collections-grid .collection-card:nth-child(5) { display: none; }
+    .products-grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .story-section { grid-template-columns: 1fr; }
+    .story-image { height: 380px; }
+    .story-content { padding: 60px 40px; }
+    .bundles-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .hero { height: 520px; }
+    .hero-content { padding: 0 28px; }
+    .hero-title { font-size: 38px; }
+    .feature-icons-inner { grid-template-columns: repeat(2, 1fr); }
+    .collections, .limited-editions, .best-sellers, .bundles { padding-left: 20px; padding-right: 20px; }
+    .collections-grid { grid-template-columns: repeat(2, 1fr); }
+    .collections-grid .collection-card:nth-child(4),
+    .collections-grid .collection-card:nth-child(5) { display: block; }
+    .products-grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .products-grid-6 { grid-template-columns: repeat(2, 1fr); }
+    .bundles-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-left { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  }
+  @media (max-width: 480px) {
+    .logo-name { font-size: 17px; }
+    .hero-title { font-size: 30px; }
+    .hero-sub { font-size: 13px; }
+    .hero-buttons { flex-direction: column; gap: 10px; }
+    .feature-icons-inner { grid-template-columns: 1fr; gap: 20px; }
+    .collections-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+    .products-grid-4 { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .products-grid-6 { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-input { border-right: 1px solid rgba(255,255,255,0.2); }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  /* =============================================
+     HOVER & ANIMATIONS
+  ============================================= */
+  @media (prefers-reduced-motion: no-preference) {
+    .collection-card img,
+    .product-image-wrap img,
+    .story-image img,
+    .bundle-images img {
+      will-change: transform;
+    }
+  }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+/* ===== SEARCH OVERLAY ===== */
+.search-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);
+  z-index:3000;align-items:flex-start;justify-content:center;padding-top:120px;
+}
+.search-overlay.open{display:flex}
+.search-box{width:100%;max-width:640px;padding:0 24px}
+.search-input-wrap{position:relative}
+.search-input{
+  width:100%;padding:16px 52px 16px 20px;font-size:18px;
+  background:transparent;border:none;border-bottom:2px solid rgba(255,255,255,0.5);
+  color:var(--white);outline:none;
+}
+.search-input::placeholder{color:rgba(255,255,255,0.4)}
+.search-input:focus{border-bottom-color:var(--white)}
+.search-close{
+  position:absolute;right:0;top:50%;transform:translateY(-50%);
+  color:var(--white);font-size:24px;cursor:pointer;background:none;border:none;
+}
+.search-results{margin-top:32px;color:var(--white)}
+.search-hint{font-size:13px;opacity:0.5;margin-top:12px}
+.search-result-item{
+  display:flex;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1);
+  cursor:pointer;
+}
+.search-result-item img{width:56px;height:56px;object-fit:cover;flex-shrink:0}
+.search-result-info p{font-size:14px;font-weight:500}
+.search-result-info span{font-size:12px;opacity:0.6}
+
+/* ===== CART SIDEBAR ===== */
+.cart-sidebar{
+  position:fixed;right:0;top:0;height:100%;width:380px;max-width:100%;
+  background:var(--white);z-index:2500;
+  transform:translateX(100%);transition:transform 0.4s ease;
+  display:flex;flex-direction:column;box-shadow:-4px 0 40px rgba(0,0,0,0.15);
+}
+.cart-sidebar.open{transform:translateX(0)}
+.cart-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:2400;
+}
+.cart-overlay.open{display:block}
+.cart-header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 24px;border-bottom:1px solid var(--light-grey);
+}
+.cart-header h3{font-family:var(--font-display);font-size:22px;font-weight:400}
+.cart-close{font-size:22px;cursor:pointer;background:none;border:none;line-height:1}
+.cart-items{flex:1;overflow-y:auto;padding:16px 24px}
+.cart-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--light-grey)}
+.cart-item img{width:72px;height:72px;object-fit:cover;flex-shrink:0}
+.cart-item-info{flex:1}
+.cart-item-name{font-size:14px;font-weight:500;margin-bottom:4px}
+.cart-item-meta{font-size:12px;color:var(--mid-grey);margin-bottom:8px}
+.cart-item-qty{display:flex;align-items:center;gap:8px}
+.qty-btn{
+  width:24px;height:24px;border:1px solid var(--light-grey);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;cursor:pointer;transition:all var(--transition);background:none;
+}
+.qty-btn:hover{background:var(--black);color:var(--white);border-color:var(--black)}
+.qty-val{font-size:13px;min-width:20px;text-align:center}
+.cart-item-price{font-size:14px;font-weight:500;flex-shrink:0}
+.cart-item-remove{font-size:11px;color:var(--mid-grey);cursor:pointer;margin-top:4px;text-decoration:underline;background:none;border:none}
+.cart-footer{padding:20px 24px;border-top:1px solid var(--light-grey)}
+.cart-totals{margin-bottom:16px}
+.cart-total-row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}
+.cart-total-row.total{font-weight:600;font-size:15px;margin-top:8px;padding-top:8px;border-top:1px solid var(--light-grey)}
+.coupon-row{display:flex;gap:8px;margin-bottom:16px}
+.coupon-row input{
+  flex:1;padding:10px 14px;border:1px solid var(--light-grey);
+  font-size:13px;outline:none;
+}
+.coupon-row input:focus{border-color:var(--black)}
+.coupon-row button{
+  padding:10px 16px;background:var(--black);color:var(--white);
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border:none;
+}
+.btn-checkout{
+  display:block;width:100%;padding:15px;background:var(--black);color:var(--white);
+  font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+  text-align:center;cursor:pointer;border:none;transition:background var(--transition);
+  margin-bottom:10px;
+}
+.btn-checkout:hover{background:var(--dark-grey)}
+.btn-continue{
+  display:block;width:100%;padding:12px;background:transparent;color:var(--dark-grey);
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  text-align:center;cursor:pointer;border:1px solid var(--light-grey);
+  transition:all var(--transition);
+}
+.btn-continue:hover{border-color:var(--black);color:var(--black)}
+.cart-empty{text-align:center;padding:60px 0}
+.cart-empty p{color:var(--mid-grey);margin-bottom:20px}
+
+/* ===== INNER PAGES ===== */
+.page-hero{
+  background:var(--off-white);
+  padding:60px 32px;text-align:center;
+  border-bottom:1px solid var(--light-grey);
+}
+.page-hero h1{font-family:var(--font-display);font-size:clamp(36px,4vw,56px);font-weight:300;margin-bottom:12px}
+.page-hero p{font-size:14px;color:var(--mid-grey);max-width:480px;margin:0 auto}
+.breadcrumb{
+  display:flex;gap:8px;align-items:center;font-size:11px;
+  color:var(--mid-grey);letter-spacing:0.08em;text-transform:uppercase;
+  max-width:1200px;margin:0 auto 24px;
+}
+.breadcrumb a:hover{color:var(--black)}
+.breadcrumb span{opacity:0.5}
+
+/* Collections page */
+.collections-page{padding:48px 32px;max-width:1440px;margin:0 auto}
+.collections-large-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.coll-card{position:relative;overflow:hidden;aspect-ratio:2/3;cursor:pointer}
+.coll-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+.coll-card:hover img{transform:scale(1.04)}
+.coll-card-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,0.55) 0%,transparent 55%)}
+.coll-card-info{position:absolute;bottom:0;left:0;right:0;padding:24px;color:var(--white)}
+.coll-card-name{font-family:var(--font-display);font-size:24px;font-weight:300;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.coll-card-count{font-size:11px;opacity:0.7;letter-spacing:0.1em}
+
+/* Product grid page */
+.shop-layout{display:grid;grid-template-columns:240px 1fr;gap:40px;padding:48px 32px;max-width:1440px;margin:0 auto}
+.shop-filters{position:sticky;top:calc(var(--header-h) + 16px);height:fit-content}
+.filter-group{margin-bottom:28px;border-bottom:1px solid var(--light-grey);padding-bottom:20px}
+.filter-title{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:14px;cursor:pointer;display:flex;justify-content:space-between}
+.filter-options label{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:8px;cursor:pointer}
+.filter-options input[type=checkbox]{width:14px;height:14px;cursor:pointer}
+.filter-options select{
+  width:100%;padding:9px 12px;border:1px solid var(--light-grey);
+  font-size:13px;outline:none;cursor:pointer;background:var(--white);
+}
+.shop-main-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.shop-count{font-size:13px;color:var(--mid-grey)}
+.sort-select{
+  padding:8px 14px;border:1px solid var(--light-grey);
+  font-size:12px;outline:none;cursor:pointer;background:var(--white);
+}
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.pagination{display:flex;gap:4px;justify-content:center;margin-top:48px}
+.pagination button{
+  width:36px;height:36px;border:1px solid var(--light-grey);
+  font-size:13px;cursor:pointer;background:none;transition:all var(--transition);
+}
+.pagination button.active,
+.pagination button:hover{background:var(--black);color:var(--white);border-color:var(--black)}
+
+/* Product detail page */
+.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1440px;margin:0 auto}
+.product-gallery{padding:48px 32px;position:sticky;top:var(--header-h);height:fit-content}
+.main-image-wrap{position:relative;overflow:hidden;margin-bottom:12px;cursor:zoom-in}
+.main-image-wrap img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform 0.4s ease}
+.main-image-wrap:hover img{transform:scale(1.08)}
+.thumb-row{display:flex;gap:8px}
+.thumb{
+  width:80px;height:80px;object-fit:cover;cursor:pointer;
+  border:2px solid transparent;transition:border-color var(--transition);opacity:0.7;
+}
+.thumb.active,
+.thumb:hover{border-color:var(--black);opacity:1}
+.product-info{padding:48px 32px 48px 0;border-left:1px solid var(--light-grey)}
+.product-collection{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:12px}
+.product-title{font-family:var(--font-display);font-size:clamp(32px,3vw,44px);font-weight:300;margin-bottom:8px;line-height:1.2}
+.product-edition-badge{
+  display:inline-block;padding:4px 10px;background:var(--black);color:var(--white);
+  font-size:10px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:16px;
+}
+.product-desc{font-size:13px;line-height:1.8;color:var(--dark-grey);margin-bottom:28px}
+.size-selector{margin-bottom:24px}
+.size-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:12px}
+.size-options{display:flex;gap:8px}
+.size-btn{
+  padding:10px 20px;border:1px solid var(--light-grey);
+  font-size:12px;cursor:pointer;background:none;transition:all var(--transition);
+}
+.size-btn.active,
+.size-btn:hover{background:var(--black);color:var(--white);border-color:var(--black)}
+.product-price-display{font-size:24px;font-weight:300;margin-bottom:28px}
+.product-actions{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.btn-add-cart{
+  width:100%;padding:15px;background:var(--black);color:var(--white);
+  font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:background var(--transition);
+}
+.btn-add-cart:hover{background:var(--dark-grey)}
+.btn-wishlist-full{
+  width:100%;padding:13px;background:transparent;color:var(--black);
+  font-size:12px;letter-spacing:0.12em;text-transform:uppercase;
+  border:1px solid var(--black);cursor:pointer;transition:all var(--transition);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn-wishlist-full:hover{background:var(--black);color:var(--white)}
+.product-meta{border-top:1px solid var(--light-grey);padding-top:24px}
+.meta-row{display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--light-grey);font-size:13px}
+.meta-label{font-weight:500;min-width:140px;flex-shrink:0}
+.meta-value{color:var(--dark-grey)}
+.share-row{display:flex;gap:12px;align-items:center;margin-top:16px}
+.share-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid-grey)}
+.share-btn{
+  width:32px;height:32px;border:1px solid var(--light-grey);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;cursor:pointer;background:none;transition:all var(--transition);
+}
+.share-btn:hover{background:var(--black);color:var(--white);border-color:var(--black)}
+
+/* Account pages */
+.auth-page{min-height:70vh;display:flex;align-items:center;justify-content:center;padding:60px 24px}
+.auth-box{width:100%;max-width:420px}
+.auth-title{font-family:var(--font-display);font-size:36px;font-weight:300;margin-bottom:8px;text-align:center}
+.auth-sub{font-size:13px;color:var(--mid-grey);text-align:center;margin-bottom:36px}
+.form-group{margin-bottom:18px}
+.form-label{display:block;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+.form-input{
+  width:100%;padding:12px 16px;border:1px solid var(--light-grey);
+  font-size:14px;outline:none;background:var(--white);transition:border-color var(--transition);
+}
+.form-input:focus{border-color:var(--black)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-submit{
+  width:100%;padding:14px;background:var(--black);color:var(--white);
+  font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:background var(--transition);margin-top:8px;
+}
+.btn-submit:hover{background:var(--dark-grey)}
+.auth-link{text-align:center;font-size:13px;color:var(--mid-grey);margin-top:20px}
+.auth-link a{color:var(--black);text-decoration:underline}
+.divider{display:flex;align-items:center;gap:16px;margin:24px 0;color:var(--mid-grey);font-size:12px}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--light-grey)}
+
+/* Checkout page */
+.checkout-layout{display:grid;grid-template-columns:1fr 380px;gap:48px;padding:48px 32px;max-width:1200px;margin:0 auto}
+.checkout-main h2{font-family:var(--font-display);font-size:28px;font-weight:400;margin-bottom:8px}
+.checkout-section{margin-bottom:32px}
+.checkout-section-title{font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--light-grey)}
+.checkout-sidebar{background:var(--off-white);padding:28px;height:fit-content;position:sticky;top:calc(var(--header-h)+16px)}
+.checkout-items{margin-bottom:20px}
+.checkout-item{display:flex;gap:12px;margin-bottom:12px}
+.checkout-item img{width:60px;height:60px;object-fit:cover;flex-shrink:0}
+.checkout-item-name{font-size:13px;font-weight:500}
+.checkout-item-meta{font-size:11px;color:var(--mid-grey)}
+.checkout-item-price{font-size:13px;margin-left:auto;flex-shrink:0}
+.checkout-totals .row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}
+.checkout-totals .total-row{font-weight:600;font-size:15px;padding-top:12px;border-top:1px solid rgba(0,0,0,0.1)}
+.payment-placeholder{
+  border:2px dashed var(--light-grey);padding:24px;text-align:center;
+  color:var(--mid-grey);font-size:13px;margin-bottom:16px;
+}
+
+/* Order confirmation */
+.order-confirm{padding:80px 32px;text-align:center;max-width:600px;margin:0 auto}
+.confirm-icon{font-size:60px;margin-bottom:24px}
+.confirm-title{font-family:var(--font-display);font-size:44px;font-weight:300;margin-bottom:12px}
+.confirm-sub{font-size:14px;color:var(--mid-grey);margin-bottom:36px;line-height:1.6}
+.order-summary-box{background:var(--off-white);padding:28px;text-align:left;margin-bottom:32px}
+
+/* Static pages */
+.static-page{max-width:800px;margin:0 auto;padding:60px 32px}
+.static-page h1{font-family:var(--font-display);font-size:44px;font-weight:300;margin-bottom:8px}
+.static-page .lead{font-size:16px;color:var(--mid-grey);margin-bottom:40px;line-height:1.7}
+.static-page h2{font-family:var(--font-display);font-size:26px;font-weight:400;margin:36px 0 14px}
+.static-page p{font-size:14px;line-height:1.9;color:var(--dark-grey);margin-bottom:16px}
+.static-page ul{padding-left:20px;margin-bottom:16px}
+.static-page ul li{font-size:14px;line-height:1.9;color:var(--dark-grey);margin-bottom:6px;list-style:disc}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--light-grey)}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 0;cursor:pointer;font-size:15px;font-weight:500;
+}
+.faq-q span{font-size:20px;transition:transform var(--transition)}
+.faq-item.open .faq-q span{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 0 18px;font-size:13px;line-height:1.8;color:var(--dark-grey)}
+.faq-item.open .faq-a{display:block}
+
+/* Contact */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:60px 32px;max-width:1100px;margin:0 auto}
+.contact-info h2{font-family:var(--font-display);font-size:36px;font-weight:300;margin-bottom:16px}
+.contact-info p{font-size:14px;line-height:1.8;color:var(--dark-grey);margin-bottom:24px}
+.contact-detail{font-size:13px;margin-bottom:10px;display:flex;gap:10px;align-items:flex-start}
+.contact-detail strong{min-width:80px}
+.contact-form h3{font-size:18px;font-weight:500;margin-bottom:24px}
+textarea.form-input{resize:vertical;min-height:130px}
+
+/* Wishlist */
+.wishlist-page{padding:48px 32px;max-width:1200px;margin:0 auto}
+.wishlist-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+
+/* Search results */
+.search-results-page{padding:48px 32px;max-width:1440px;margin:0 auto}
+.search-results-header{margin-bottom:32px}
+.search-results-header h1{font-family:var(--font-display);font-size:36px;font-weight:300;margin-bottom:6px}
+.search-results-header p{font-size:14px;color:var(--mid-grey)}
+.search-input-bar{display:flex;gap:0;margin-bottom:40px;max-width:580px}
+.search-input-bar input{
+  flex:1;padding:13px 18px;border:1px solid var(--light-grey);border-right:none;
+  font-size:14px;outline:none;
+}
+.search-input-bar input:focus{border-color:var(--black)}
+.search-input-bar button{
+  padding:13px 20px;background:var(--black);color:var(--white);
+  border:none;cursor:pointer;font-size:14px;
+}
+
+/* Bundle page */
+.bundle-detail{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1440px;margin:0 auto}
+.bundle-gallery{padding:48px 32px}
+.bundle-gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.bundle-gallery-grid img{width:100%;aspect-ratio:1;object-fit:cover}
+.bundle-info{padding:48px 32px 48px 0;border-left:1px solid var(--light-grey);display:flex;flex-direction:column;justify-content:center}
+.bundle-info h1{font-family:var(--font-display);font-size:clamp(32px,3vw,44px);font-weight:300;margin-bottom:12px}
+
+/* Toast notification */
+.toast{
+  position:fixed;bottom:24px;right:24px;
+  background:var(--black);color:var(--white);
+  padding:14px 20px;font-size:13px;
+  transform:translateY(80px);opacity:0;
+  transition:all 0.4s ease;z-index:4000;
+  display:flex;align-items:center;gap:10px;
+}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1200px){
+  .bestsellers-grid{grid-template-columns:repeat(4,1fr)}
+  .shop-layout{grid-template-columns:200px 1fr}
+}
+@media(max-width:1024px){
+  .header-inner{padding:0 20px}
+  .collections-grid{grid-template-columns:repeat(3,1fr)}
+  .collections-grid .collection-tile:nth-child(4),
+  .collections-grid .collection-tile:nth-child(5){display:none}
+  .collections-grid.five-tiles{grid-template-columns:repeat(5,1fr)}
+  .collections-grid.five-tiles .collection-tile{display:block}
+  .products-grid{grid-template-columns:repeat(3,1fr)}
+  .bestsellers-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .product-detail{grid-template-columns:1fr}
+  .product-gallery{position:relative;top:0}
+  .product-info{padding:0 32px 48px;border-left:none;border-top:1px solid var(--light-grey)}
+  .checkout-layout{grid-template-columns:1fr}
+  .checkout-sidebar{position:relative;top:0}
+  .contact-layout{grid-template-columns:1fr}
+  .bundle-detail{grid-template-columns:1fr}
+  .bundle-info{border-left:none;border-top:1px solid var(--light-grey);padding:32px}
+}
+@media(max-width:768px){
+  :root{--header-h:52px}
+  .header-nav{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:flex}
+  .hero-content{left:24px;bottom:60px}
+  .icon-panel-inner{grid-template-columns:repeat(2,1fr);gap:20px}
+  .icon-item{border-right:none;padding:0}
+  .icon-item:nth-child(odd){border-right:none}
+  .collections-grid,.collections-grid.five-tiles{grid-template-columns:repeat(2,1fr)}
+  .collections-grid.five-tiles .collection-tile:last-child{grid-column:span 2}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .bestsellers-grid{grid-template-columns:repeat(2,1fr)}
+  .bundles-grid{grid-template-columns:1fr}
+  .artist-section{grid-template-columns:1fr}
+  .artist-text{padding:48px 24px}
+  .shop-layout{grid-template-columns:1fr}
+  .shop-filters{display:none}
+  .shop-grid{grid-template-columns:repeat(2,1fr)}
+  .collections-large-grid{grid-template-columns:repeat(2,1fr)}
+  .wishlist-grid{grid-template-columns:repeat(2,1fr)}
+  .form-row{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .hero-btns{flex-direction:column;gap:10px}
+  .collections-section,.products-section,.bestsellers-section,.bundles-section{padding-left:16px;padding-right:16px}
+  .checkout-layout,.contact-layout,.collections-page,.shop-layout,.wishlist-page,.search-results-page,.static-page{padding-left:16px;padding-right:16px}
+}
+@media(max-width:480px){
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .bestsellers-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .collections-large-grid{grid-template-columns:1fr}
+  .wishlist-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .header-actions .account-btn,.header-actions .wishlist-btn{display:none}
+}
+
+/* ===== UTILITY ===== */
+.mt-0{margin-top:0}
+.hidden{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* Loading state */
+.skeleton{background:linear-gradient(90deg,var(--light-grey) 25%,#f0eeeb 50%,var(--light-grey) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* Lazy load fade in */
+.lazy{opacity:0;transition:opacity 0.4s ease}
+.lazy.loaded{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement-bar">
+  <div class="announcement-text">
+    <span>Free Shipping Across Australia</span>
+  </div>
+  <div class="ann-nav">
+    <button onclick="prevAnn()">&#8249;</button>
+    <button onclick="nextAnn()">&#8250;</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <nav class="header-nav">
+      <a href="#" onclick="showPage('home')" class="active" data-page="home">Featured</a>
+      <a href="#" onclick="showPage('collection-category','portraits')" data-page="collection-category">Portraits</a>
+      <a href="#" onclick="showPage('collection-category','urban')" data-page="collection-category">Urban</a>
+      <a href="#" onclick="showPage('collection-category','nature')" data-page="collection-category">Nature</a>
+      <a href="#" onclick="showPage('collection-category','objects')" data-page="collection-category">Objects</a>
+      <a href="#" onclick="showPage('limited-editions')" data-page="limited-editions">Limited Editions</a>
+      <a href="#" onclick="showPage('bundles')" data-page="bundles">Bundles</a>
+    </nav>
+    <div class="logo" onclick="showPage('home')">
+      <div style=" margin-left: 45px;" class="logo-brand">J. Fletcher Art</div>
+      <div style=" margin-left: 45px;"  class="logo-sub">Fine Art Photography</div>
+    </div>
+    <div class="header-actions">
+      <button onclick="openSearch()" aria-label="Search">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <span>Search</span>
+      </button>
+      <button onclick="showPage('account-login')" class="account-btn" aria-label="Account">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Account</span>
+      </button>
+      <button onclick="showPage('wishlist')" class="wishlist-btn" aria-label="Wishlist">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span>Wishlist</span>
+      </button>
+      <button onclick="openCart()" class="cart-btn" aria-label="Cart">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span>Cart</span>
+        <span class="cart-count" id="cartCount">2</span>
+      </button>
+      <button class="hamburger" onclick="openMobileMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<nav class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">&#215;</button>
+  <a href="#" onclick="showPage('home');closeMobileMenu()">Featured</a>
+  <a href="#" onclick="showPage('collections');closeMobileMenu()">Collections</a>
+  <a href="#" onclick="showPage('collection-category','portraits');closeMobileMenu()">Portraits</a>
+  <a href="#" onclick="showPage('collection-category','urban');closeMobileMenu()">Urban</a>
+  <a href="#" onclick="showPage('collection-category','nature');closeMobileMenu()">Nature</a>
+  <a href="#" onclick="showPage('collection-category','objects');closeMobileMenu()">Objects</a>
+  <a href="#" onclick="showPage('limited-editions');closeMobileMenu()">Limited Editions</a>
+  <a href="#" onclick="showPage('bundles');closeMobileMenu()">Bundles</a>
+  <a href="#" onclick="showPage('artist-story');closeMobileMenu()">Our Story</a>
+  <a href="#" onclick="showPage('contact');closeMobileMenu()">Contact</a>
+  <div class="mobile-menu-actions">
+    <button onclick="showPage('account-login');closeMobileMenu()">Account</button>
+    <button onclick="showPage('wishlist');closeMobileMenu()">Wishlist</button>
+    <button onclick="openCart();closeMobileMenu()">Cart (<span id="mobileCartCount">2</span>)</button>
+  </div>
+</nav>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay" onclick="closeSearchOnBg(event)">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <input class="search-input" id="searchInput" type="text" placeholder="Search prints, collections..." oninput="doSearch(this.value)" onkeydown="searchKeydown(event)">
+      <button class="search-close" onclick="closeSearch()">&#215;</button>
+    </div>
+    <div id="searchResultsContainer" class="search-results"></div>
+    <p class="search-hint" id="searchHint">Try: "portrait", "nature", "limited edition"</p>
+  </div>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<aside class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button class="cart-close" onclick="closeCart()">&#215;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="coupon-row">
+      <input type="text" placeholder="Coupon code" id="couponInput">
+      <button onclick="applyCoupon()">Apply</button>
+    </div>
+    <div class="cart-totals" id="cartTotals"></div>
+    <button class="btn-checkout" onclick="showPage('checkout');closeCart()">Proceed to Checkout</button>
+    <button class="btn-continue" onclick="closeCart()">Continue Shopping</button>
+  </div>
+</aside>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ==================== PAGES ==================== -->
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-slides" id="heroSlides">
+      <div class="hero-slide active hero-slide-1"></div>
+      <div class="hero-slide hero-slide-2"></div>
+      <div class="hero-slide hero-slide-3"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Fine Art Photography Prints</p>
+      <h1 class="hero-title">Own The Moment.<br>Collect The Story.</h1>
+      <p class="hero-subtitle">Museum-quality photographic prints designed to last generations.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('collections')">Shop Collection</button>
+        <button class="btn-outline" onclick="showPage('limited-editions')">View Limited Editions</button>
+      </div>
+    </div>
+    <div class="hero-dots" id="heroDots">
+      <button class="hero-dot active" onclick="goToSlide(0)"></button>
+      <button class="hero-dot" onclick="goToSlide(1)"></button>
+      <button class="hero-dot" onclick="goToSlide(2)"></button>
+      <!-- <button class="hero-dot" onclick="goToSlide(3)"></button> -->
+    </div>
+    <button class="hero-arrow hero-prev" onclick="heroNav(-1)">&#8249;</button>
+    <button class="hero-arrow hero-next" onclick="heroNav(1)">&#8250;</button>
+    <button class="hero-arrow hero-next" onclick="heroNav(2)">&#8250;</button>
+  </section>
+
+  <!-- Icon Panel (directly below hero) -->
+  <section class="icon-panel">
+    <div class="icon-panel-inner">
+      <div class="icon-item">
+        <svg class="icon-svg" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 36 36">
+          <rect x="4" y="8" width="28" height="20" rx="1"/><circle cx="18" cy="18" r="5"/><circle cx="18" cy="18" r="2"/>
+        </svg>
+        <div class="icon-text">
+          <h4>Museum Quality Prints</h4>
+          <p>Printed on archival fine art paper using premium inks.</p>
+        </div>
+      </div>
+      <div class="icon-item">
+        <svg class="icon-svg" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 36 36">
+          <rect x="8" y="12" width="20" height="18" rx="1"/><path d="M12 12V9a6 6 0 0 1 12 0v3"/><rect x="15" y="19" width="6" height="4" rx="1"/>
+        </svg>
+        <div class="icon-text">
+          <h4>Secure Checkout</h4>
+          <p>100% secure payments via trusted gateway providers.</p>
+        </div>
+      </div>
+      <div class="icon-item">
+        <svg class="icon-svg" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 36 36">
+          <rect x="2" y="12" width="32" height="16" rx="2"/><path d="M8 12V9a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v3"/><path d="M12 20h4m4 0h4"/>
+        </svg>
+        <div class="icon-text">
+          <h4>Worldwide Shipping</h4>
+          <p>Carefully packaged and delivered to your door.</p>
+        </div>
+      </div>
+      <div class="icon-item">
+        <svg class="icon-svg" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 36 36">
+          <path d="M18 4l2.8 8.4H30l-7.2 5.2 2.8 8.4L18 21.5 10.4 26l2.8-8.4L6 12.4h9.2z"/>
+        </svg>
+        <div class="icon-text">
+          <h4>Authenticity Guarantee</h4>
+          <p>Every limited edition print comes with a certificate of authenticity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore Collections (5 tiles) -->
+  <section class="collections-section">
+    <h2 class="centered-title">Explore Collections</h2>
+    <div class="collections-grid five-tiles">
+      <div class="collection-tile" onclick="showPage('collection-category','portraits')">
+        <img src="https://i.ibb.co.com/bnZF8CV/01.jpg" alt="Portraits" loading="lazy">
+        <div class="collection-tile-overlay"></div>
+        <div class="collection-tile-info">
+          <div class="collection-tile-name">Portraits</div>
+          <div class="collection-tile-cta">View Collection →</div>
+        </div>
+      </div>
+      <div class="collection-tile" onclick="showPage('collection-category','urban')">
+        <img src="https://i.ibb.co.com/Qv1LpwJm/02.jpg" alt="Urban" loading="lazy">
+        <div class="collection-tile-overlay"></div>
+        <div class="collection-tile-info">
+          <div class="collection-tile-name">Urban</div>
+          <div class="collection-tile-cta">View Collection →</div>
+        </div>
+      </div>
+      <div class="collection-tile" onclick="showPage('collection-category','nature')">
+        <img src="https://i.ibb.co.com/fzXs75vk/04.jpg" alt="Nature" loading="lazy">
+        <div class="collection-tile-overlay"></div>
+        <div class="collection-tile-info">
+          <div class="collection-tile-name">Nature</div>
+          <div class="collection-tile-cta">View Collection →</div>
+        </div>
+      </div>
+      <div class="collection-tile" onclick="showPage('collection-category','objects')">
+        <img src="https://i.ibb.co.com/9HJD4rtN/05.jpg" alt="Objects" loading="lazy">
+        <div class="collection-tile-overlay"></div>
+        <div class="collection-tile-info">
+          <div class="collection-tile-name">Objects</div>
+          <div class="collection-tile-cta">View Collection →</div>
+        </div>
+      </div>
+      <div class="collection-tile" onclick="showPage('limited-editions')">
+        <img src="https://i.ibb.co.com/bSgHfb2/07-2.png" alt="Limited Editions" loading="lazy">
+        <div class="collection-tile-overlay"></div>
+        <div class="collection-tile-info">
+          <div class="collection-tile-name">Limited Editions</div>
+          <div class="collection-tile-cta">View Collection →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Limited Edition Prints (4 products) -->
+  <section class="products-section">
+    <div class="section-header">
+      <h2 class="section-title">Limited Edition Prints</h2>
+      <a href="#" class="section-link" onclick="showPage('limited-editions');return false">View All Limited Editions</a>
+    </div>
+    <div class="products-grid" id="limitedEditionProducts"></div>
+  </section>
+
+  <!-- Artist Story -->
+  <section class="artist-section">
+    <div class="artist-text">
+      <p class="artist-eyebrow">The Artist</p>
+      <h2 class="artist-title">The Story Behind The Lens</h2>
+      <p class="artist-body">My work is about connection — capturing the fleeting moments, raw emotions, and untold stories that deserve to be remembered. Each photograph is an invitation to pause, reflect, and feel.</p>
+      <button class="btn-white" onclick="showPage('artist-story')">Meet The Artist</button>
+    </div>
+    <div class="artist-image">
+      <img src="https://i.ibb.co.com/Jw90V9P0/03.jpg" alt="The Artist" loading="lazy">
+    </div>
+  </section>
+
+  <!-- Best Sellers -->
+  <section class="bestsellers-section">
+    <div class="section-header">
+      <h2 class="section-title">Best Selling Prints</h2>
+      <a href="#" class="section-link" onclick="showPage('best-sellers');return false">View All Best Sellers</a>
+    </div>
+    <div class="bestsellers-grid" id="bestSellersGrid"></div>
+  </section>
+
+  <!-- Bundle Collections -->
+  <section class="bundles-section">
+    <div class="section-header">
+      <h2 class="section-title">Bundle Collections</h2>
+      <a href="#" class="section-link" onclick="showPage('bundles');return false">Explore All Bundles</a>
+    </div>
+    <div class="bundles-grid" id="bundlesGrid"></div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter-section">
+    <div class="newsletter-bg"></div>
+    <div class="newsletter-inner">
+      <h2 class="newsletter-title">Stay Inspired</h2>
+      <p class="newsletter-sub">Subscribe for updates on new collections, exclusive offers, and photography stories.</p>
+      <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo-name">J. Fletcher Art</div>
+        <div class="footer-logo-sub">Fine Art Photography</div>
+        <p class="footer-tagline">Timeless photographs. Meaningful stories. Lasting impressions.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          </a>
+          <a href="#" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Collections -->
+      <div class="footer-col">
+        <h5>Collections</h5>
+        <ul>
+          <li><a href="#">Portraits</a></li>
+          <li><a href="#">Urban</a></li>
+          <li><a href="#">Nature</a></li>
+          <li><a href="#">Objects</a></li>
+          <li><a href="#">Limited Editions</a></li>
+          <li><a href="#">Bundles</a></li>
+        </ul>
+      </div>
+
+      <!-- Customer Service -->
+      <div class="footer-col">
+        <h5>Customer Service</h5>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Shipping &amp; Delivery</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Payment Options</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- About -->
+      <div class="footer-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">The Artist</a></li>
+          <li><a href="#">Journal</a></li>
+          <li><a href="#">Exhibitions</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- We Accept -->
+      <div class="footer-payments">
+        <h5>We Accept</h5>
+        <div class="payment-logos">
+          <!-- Visa -->
+          <div class="payment-logo visa">
+            <svg viewBox="0 0 60 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="2" y="16" font-family="Arial" font-size="14" font-weight="bold" fill="white" font-style="italic">VISA</text>
+            </svg>
+          </div>
+          <!-- Mastercard -->
+          <div class="payment-logo mc">
+            <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="12" r="10" fill="#EB001B"/>
+              <circle cx="24" cy="12" r="10" fill="#F79E1B"/>
+              <path d="M19 5.27a10 10 0 0 1 0 13.46A10 10 0 0 1 19 5.27z" fill="#FF5F00"/>
+            </svg>
+          </div>
+          <!-- Amex -->
+          <div class="payment-logo" style="background:#2E77BC">
+            <svg viewBox="0 0 60 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="2" y="15" font-family="Arial" font-size="10" font-weight="bold" fill="white">AMEX</text>
+            </svg>
+          </div>
+          <!-- PayPal -->
+          <div class="payment-logo" style="background:#003087">
+            <svg viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="2" y="15" font-family="Arial" font-size="10" font-weight="bold" fill="#009cde">Pay</text>
+              <text x="22" y="15" font-family="Arial" font-size="10" font-weight="bold" fill="white">Pal</text>
+            </svg>
+          </div>
+          <!-- Apple Pay -->
+          <!-- <div class="payment-logo" style="background:#000; min-width:54px;">
+            <svg viewBox="0 0 60 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="2" y="15" font-family="Arial" font-size="9" fill="white">&#xF8FF; Pay</text>
+            </svg>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 J. Fletcher Art. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Sitemap</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  <!-- <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo-brand">J. Fletcher Art</div>
+          <div class="footer-logo-sub">Fine Art Photography</div>
+          <p class="footer-tagline">Timeless photographs. Meaningful stories. Lasting impressions.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">&#9632;</a>
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Pinterest">&#9651;</a>
+            <a href="#" aria-label="Twitter">&#9670;</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Collections</h5>
+          <ul>
+            <li><a href="#" onclick="showPage('collection-category','portraits')">Portraits</a></li>
+            <li><a href="#" onclick="showPage('collection-category','urban')">Urban</a></li>
+            <li><a href="#" onclick="showPage('collection-category','nature')">Nature</a></li>
+            <li><a href="#" onclick="showPage('collection-category','objects')">Objects</a></li>
+            <li><a href="#" onclick="showPage('limited-editions')">Limited Editions</a></li>
+            <li><a href="#" onclick="showPage('bundles')">Bundles</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Customer Service</h5>
+          <ul>
+            <li><a href="#" onclick="showPage('faq')">FAQs</a></li>
+            <li><a href="#" onclick="showPage('shipping')">Shipping &amp; Delivery</a></li>
+            <li><a href="#" onclick="showPage('shipping')">Returns</a></li>
+            <li><a href="#" onclick="showPage('contact')">Payment Options</a></li>
+            <li><a href="#" onclick="showPage('privacy')">Privacy Policy</a></li>
+            <li><a href="#" onclick="showPage('terms')">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>About</h5>
+          <ul>
+            <li><a href="#" onclick="showPage('artist-story')">Our Story</a></li>
+            <li><a href="#" onclick="showPage('artist-story')">The Artist</a></li>
+            <li><a href="#">Journal</a></li>
+            <li><a href="#">Exhibitions</a></li>
+            <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>We Accept</h5>
+          <div class="payment-icons">
+            <span class="payment-badge">VISA</span>
+            <span class="payment-badge">MC</span>
+            <span class="payment-badge">AMEX</span>
+            <span class="payment-badge">PayPal</span>
+            <span class="payment-badge">Apple Pay</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 J. Fletcher Art. All rights reserved.</span>
+        <div style="display:flex;gap:20px">
+          <a href="#" onclick="showPage('privacy')">Sitemap</a>
+          <a href="#" onclick="showPage('terms')">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer> -->
+</div>
+
+<!-- COLLECTIONS PAGE -->
+<div class="page" id="page-collections">
+  <div class="page-hero">
+    <h1>All Collections</h1>
+    <p>Fine art photography across portraiture, landscape, urban, and still life.</p>
+  </div>
+  <div class="collections-page">
+    <div class="collections-large-grid">
+      <div class="coll-card" onclick="showPage('collection-category','portraits')">
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80" alt="Portraits">
+        <div class="coll-card-overlay"></div>
+        <div class="coll-card-info"><div class="coll-card-name">Portraits</div><div class="coll-card-count">18 Works</div></div>
+      </div>
+      <div class="coll-card" onclick="showPage('collection-category','urban')">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" alt="Urban">
+        <div class="coll-card-overlay"></div>
+        <div class="coll-card-info"><div class="coll-card-name">Urban</div><div class="coll-card-count">22 Works</div></div>
+      </div>
+      <div class="coll-card" onclick="showPage('collection-category','nature')">
+        <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80" alt="Nature">
+        <div class="coll-card-overlay"></div>
+        <div class="coll-card-info"><div class="coll-card-name">Nature</div><div class="coll-card-count">26 Works</div></div>
+      </div>
+      <div class="coll-card" onclick="showPage('collection-category','objects')">
+        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&q=80" alt="Objects">
+        <div class="coll-card-overlay"></div>
+        <div class="coll-card-info"><div class="coll-card-name">Objects</div><div class="coll-card-count">14 Works</div></div>
+      </div>
+      <div class="coll-card" onclick="showPage('limited-editions')">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Limited Editions">
+        <div class="coll-card-overlay"></div>
+        <div class="coll-card-info"><div class="coll-card-name">Limited Editions</div><div class="coll-card-count">8 Works</div></div>
+      </div>
+      <div class="coll-card" onclick="showPage('bundles')">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Bundles">
+        <div class="coll-card-overlay"></div>
+        <div class="coll-card-info"><div class="coll-card-name">Bundle Sets</div><div class="coll-card-count">3 Bundles</div></div>
+      </div>
+    </div>
+  </div>
+  <div id="collectionsPageFooter"></div>
+</div>
+
+<!-- COLLECTION CATEGORY PAGE -->
+<div class="page" id="page-collection-category">
+  <div class="page-hero" id="collCatHero">
+    <h1 id="collCatTitle">Portraits</h1>
+    <p id="collCatDesc">A study of the human form, raw emotion, and inner worlds.</p>
+  </div>
+  <div class="shop-layout">
+    <aside class="shop-filters">
+      <div class="filter-group">
+        <div class="filter-title">Size <span>&#8964;</span></div>
+        <div class="filter-options">
+          <label><input type="checkbox"> A5 (148×210mm)</label>
+          <label><input type="checkbox"> A4 (210×297mm)</label>
+          <label><input type="checkbox"> A3 (297×420mm)</label>
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-title">Availability <span>&#8964;</span></div>
+        <div class="filter-options">
+          <label><input type="checkbox"> In Stock</label>
+          <label><input type="checkbox"> Limited</label>
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-title">Price <span>&#8964;</span></div>
+        <div class="filter-options">
+          <select><option>All Prices</option><option>Under $250</option><option>$250 – $500</option><option>Over $500</option></select>
+        </div>
+      </div>
+    </aside>
+    <div>
+      <div class="shop-main-header">
+        <span class="shop-count" id="shopCount">12 Works</span>
+        <select class="sort-select" onchange="sortProducts(this.value)">
+          <option>Sort By: Featured</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Newest</option>
+        </select>
+      </div>
+      <div class="shop-grid" id="shopGrid"></div>
+      <div class="pagination">
+        <button class="active">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>&#8250;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIMITED EDITIONS PAGE -->
+<div class="page" id="page-limited-editions">
+  <div class="page-hero">
+    <h1>Limited Edition Prints</h1>
+    <p>Each edition strictly limited to 50 signed and numbered prints.</p>
+  </div>
+  <section class="products-section" style="padding-top:40px">
+    <div class="products-grid" id="limitedEditionsGrid"></div>
+  </section>
+</div>
+
+<!-- PRODUCT DETAIL PAGE -->
+<div class="page" id="page-product">
+  <div style="max-width:1440px;margin:0 auto;padding:24px 32px 0">
+    <div class="breadcrumb" id="productBreadcrumb">
+      <a href="#" onclick="showPage('home')">Home</a>
+      <span>/</span><a href="#" onclick="showPage('collections')">Collections</a>
+      <span>/</span><span id="productBreadcrumbName">Balanced Stillness</span>
+    </div>
+  </div>
+  <div class="product-detail" id="productDetail"></div>
+  <section class="products-section" style="padding-top:40px">
+    <h2 class="section-title" style="margin-bottom:24px">Related Works</h2>
+    <div class="products-grid" id="relatedProducts"></div>
+  </section>
+</div>
+
+<!-- BUNDLE COLLECTIONS PAGE -->
+<div class="page" id="page-bundles">
+  <div class="page-hero">
+    <h1>Bundle Collections</h1>
+    <p>Curated sets of five complementary prints at exclusive bundle pricing.</p>
+  </div>
+  <div style="padding:48px 32px;max-width:1200px;margin:0 auto">
+    <div class="bundles-grid" id="bundlesDetailGrid"></div>
+  </div>
+</div>
+
+<!-- BUNDLE DETAIL PAGE -->
+<div class="page" id="page-bundle-detail">
+  <div class="bundle-detail" id="bundleDetailContent"></div>
+</div>
+
+<!-- ARTIST STORY PAGE -->
+<div class="page" id="page-artist-story">
+  <div class="artist-section" style="min-height:600px">
+    <div class="artist-image"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&q=80" alt="J. Fletcher" style="height:100%;min-height:500px"></div>
+    <div class="artist-text">
+      <p class="artist-eyebrow">The Artist</p>
+      <h1 class="artist-title">J. Fletcher</h1>
+      <p class="artist-body">Based between Sydney and the mountains, J. Fletcher has spent two decades quietly documenting the world — its surfaces, silences, and unseen rhythms. The work is not about spectacle; it is about the pause before the moment, the texture of forgotten things, the weight of a glance.</p>
+      <p class="artist-body">Each print is made on archival Hahnemühle paper with pigment inks that carry a 200-year permanence guarantee. Limited editions are hand-signed and numbered, delivered with a certificate of authenticity.</p>
+      <button class="btn-white" onclick="showPage('collections')">Explore the Work</button>
+    </div>
+  </div>
+  <section class="products-section">
+    <h2 class="section-title" style="margin-bottom:24px">Featured Works</h2>
+    <div class="products-grid" id="artistFeaturedGrid"></div>
+  </section>
+</div>
+
+<!-- BEST SELLERS PAGE -->
+<div class="page" id="page-best-sellers">
+  <div class="page-hero">
+    <h1>Best Sellers</h1>
+    <p>The most collected works from the J. Fletcher Art catalogue.</p>
+  </div>
+  <section class="products-section" style="padding-top:40px">
+    <div class="products-grid" id="bestSellersFullGrid"></div>
+  </section>
+</div>
+
+<!-- CART PAGE -->
+<div class="page" id="page-cart">
+  <div class="page-hero"><h1>Your Cart</h1></div>
+  <div style="max-width:1100px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:1fr 360px;gap:40px" id="cartPageLayout">
+    <div id="cartPageItems"></div>
+    <div>
+      <div style="background:var(--off-white);padding:28px">
+        <h3 style="font-size:18px;font-weight:500;margin-bottom:20px">Order Summary</h3>
+        <div id="cartPageTotals"></div>
+        <div class="coupon-row" style="margin-top:16px">
+          <input type="text" placeholder="Coupon code" id="cartPageCoupon">
+          <button onclick="applyCoupon()">Apply</button>
+        </div>
+        <button class="btn-checkout" style="margin-top:16px" onclick="showPage('checkout')">Proceed to Checkout</button>
+        <button class="btn-continue" onclick="showPage('collections')">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT PAGE -->
+<div class="page" id="page-checkout">
+  <div class="page-hero"><h1>Checkout</h1></div>
+  <div class="checkout-layout">
+    <div class="checkout-main">
+      <div class="checkout-section">
+        <div class="checkout-section-title">Contact Information</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" required></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" required></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" required></div>
+        <div class="form-group"><label class="form-label">Phone (optional)</label><input class="form-input" type="tel"></div>
+      </div>
+      <div class="checkout-section">
+        <div class="checkout-section-title">Shipping Address</div>
+        <div class="form-group"><label class="form-label">Address Line 1</label><input class="form-input" type="text" required></div>
+        <div class="form-group"><label class="form-label">Address Line 2</label><input class="form-input" type="text"></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">City</label><input class="form-input" type="text" required></div>
+          <div class="form-group"><label class="form-label">Post Code</label><input class="form-input" type="text" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">State</label><input class="form-input" type="text"></div>
+          <div class="form-group"><label class="form-label">Country</label>
+            <select class="form-input">
+              <option>Australia</option><option>New Zealand</option><option>United States</option><option>United Kingdom</option><option>Canada</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="checkout-section">
+        <div class="checkout-section-title">Payment</div>
+        <div class="payment-placeholder">
+          <p style="margin-bottom:8px">Secure Payment Processing</p>
+          <p style="font-size:11px">Credit card · PayPal · Apple Pay · Google Pay</p>
+          <p style="font-size:11px;margin-top:8px;opacity:0.6">Your payment details are encrypted and never stored.</p>
+        </div>
+        <div class="form-group"><label class="form-label">Cardholder Name</label><input class="form-input" type="text"></div>
+        <div class="form-group"><label class="form-label">Card Number</label><input class="form-input" type="text" placeholder="•••• •••• •••• ••••" maxlength="19"></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Expiry</label><input class="form-input" type="text" placeholder="MM / YY" maxlength="7"></div>
+          <div class="form-group"><label class="form-label">CVV</label><input class="form-input" type="text" placeholder="•••" maxlength="4"></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <input type="checkbox" id="termsCheck" style="width:16px;height:16px">
+        <label for="termsCheck" style="font-size:13px">I agree to the <a href="#" onclick="showPage('terms')" style="text-decoration:underline">Terms &amp; Conditions</a> and <a href="#" onclick="showPage('privacy')" style="text-decoration:underline">Privacy Policy</a></label>
+      </div>
+      <button class="btn-submit" onclick="placeOrder()">Place Order</button>
+    </div>
+    <div class="checkout-sidebar">
+      <h3 style="font-size:18px;font-weight:500;margin-bottom:20px">Order Summary</h3>
+      <div id="checkoutItems" class="checkout-items"></div>
+      <div id="checkoutTotals" class="checkout-totals"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER CONFIRMATION PAGE -->
+<div class="page" id="page-order-confirmation">
+  <div class="order-confirm">
+    <div class="confirm-icon">✓</div>
+    <h1 class="confirm-title">Thank You!</h1>
+    <p class="confirm-sub">Your order has been placed and is being prepared. You'll receive an email confirmation shortly with tracking details.</p>
+    <div class="order-summary-box">
+      <p style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:12px">Order Details</p>
+      <p style="font-size:13px;margin-bottom:6px">Order #: <strong id="orderNumber">JFA-2025-0847</strong></p>
+      <p style="font-size:13px;margin-bottom:6px">Status: <strong>Processing</strong></p>
+      <p style="font-size:13px">Estimated Delivery: <strong>3–7 business days</strong></p>
+    </div>
+    <button class="btn-submit" style="max-width:280px;margin:0 auto" onclick="showPage('home')">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div class="page" id="page-contact">
+  <div class="page-hero"><h1>Get in Touch</h1><p>We'd love to hear from you.</p></div>
+  <div class="contact-layout">
+    <div class="contact-info">
+      <h2>Contact J. Fletcher Art</h2>
+      <p>Whether you have a question about a print, need help with an order, or would like to discuss a commission, we're here to help.</p>
+      <div class="contact-detail"><strong>Email:</strong><span>hello@jfletcherart.com</span></div>
+      <div class="contact-detail"><strong>Phone:</strong><span>+61 2 9000 0000</span></div>
+      <div class="contact-detail"><strong>Hours:</strong><span>Monday–Friday, 9am–5pm AEST</span></div>
+      <div class="contact-detail"><strong>Address:</strong><span>Sydney, NSW, Australia</span></div>
+    </div>
+    <div class="contact-form">
+      <h3>Send a Message</h3>
+      <form onsubmit="submitContact(event)">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" required></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" required></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" required></div>
+        <div class="form-group"><label class="form-label">Subject</label>
+          <select class="form-input">
+            <option>Order Enquiry</option><option>Print Question</option><option>Shipping</option><option>Returns</option><option>Commission</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" rows="5" required></textarea></div>
+        <button class="btn-submit" type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ PAGE -->
+<div class="page" id="page-faq">
+  <div class="page-hero"><h1>Frequently Asked Questions</h1></div>
+  <div class="static-page" style="max-width:720px">
+    <div id="faqList"></div>
+  </div>
+</div>
+
+<!-- SHIPPING PAGE -->
+<div class="page" id="page-shipping">
+  <div class="page-hero"><h1>Shipping &amp; Returns</h1></div>
+  <div class="static-page">
+    <h2>Shipping</h2>
+    <p>All prints are carefully packaged in acid-free tissue, wrapped in protective film, and placed in a rigid flat-pack mailer or tube depending on size. Free standard shipping is available on all Australian orders.</p>
+    <p><strong>Australia:</strong> Free standard (3–5 business days) · Express available at checkout</p>
+    <p><strong>New Zealand:</strong> Flat rate $15 AUD · 5–10 business days</p>
+    <p><strong>International:</strong> Calculated at checkout · 7–21 business days</p>
+    <h2>Returns &amp; Exchanges</h2>
+    <p>We want you to love your print. If you're not completely satisfied, contact us within 14 days of delivery and we'll arrange a return or exchange.</p>
+    <p>Prints must be returned in their original packaging and in the same condition as received. Return shipping is at the buyer's expense unless the item arrived damaged or incorrect.</p>
+    <p>Limited edition prints that have been signed and numbered are non-returnable unless faulty.</p>
+    <h2>Damaged Orders</h2>
+    <p>If your order arrives damaged, please photograph the packaging and print and email us at hello@jfletcherart.com within 48 hours. We will arrange a replacement at no cost.</p>
+    <h2>Customs &amp; Duties</h2>
+    <p>International orders may be subject to import duties and taxes. These are the responsibility of the buyer and are not included in the print price or shipping cost.</p>
+  </div>
+</div>
+
+<!-- PRIVACY PAGE -->
+<div class="page" id="page-privacy">
+  <div class="page-hero"><h1>Privacy Policy</h1></div>
+  <div class="static-page">
+    <p class="lead">Last updated: January 2025</p>
+    <h2>Information We Collect</h2>
+    <p>We collect information you provide when placing an order (name, email, shipping address, payment details), creating an account, or contacting us. We also collect browsing data such as pages visited and items added to cart.</p>
+    <h2>How We Use Your Information</h2>
+    <p>Your information is used to process orders, send shipping updates, provide customer support, and improve our website. We do not sell or rent your personal data to third parties.</p>
+    <h2>Cookies</h2>
+    <p>We use cookies to remember your cart, preferences, and to understand how visitors use our site. You can disable cookies in your browser settings, though some features may not function correctly.</p>
+    <h2>Security</h2>
+    <p>Payment processing is handled by secure, PCI-compliant third-party providers. We use SSL encryption across the entire site.</p>
+    <h2>Contact</h2>
+    <p>For privacy inquiries, email privacy@jfletcherart.com.</p>
+  </div>
+</div>
+
+<!-- TERMS PAGE -->
+<div class="page" id="page-terms">
+  <div class="page-hero"><h1>Terms &amp; Conditions</h1></div>
+  <div class="static-page">
+    <p class="lead">Last updated: January 2025</p>
+    <h2>Use of Site</h2>
+    <p>By using jfletcherart.com, you agree to these terms. The site and its content are the intellectual property of J. Fletcher Art. Unauthorised reproduction is prohibited.</p>
+    <h2>Products</h2>
+    <p>All prints are made to order. Colours may vary slightly from on-screen representation due to monitor calibration differences.</p>
+    <h2>Pricing</h2>
+    <p>All prices are in Australian Dollars (AUD) and include GST where applicable. We reserve the right to change prices without notice.</p>
+    <h2>Intellectual Property</h2>
+    <p>Purchase of a print grants the buyer a personal, non-commercial licence to display the work. All intellectual property rights remain with J. Fletcher Art.</p>
+    <h2>Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, J. Fletcher Art is not liable for any indirect or consequential loss arising from the use of this site or purchase of products.</p>
+  </div>
+</div>
+
+<!-- ACCOUNT LOGIN -->
+<div class="page" id="page-account-login">
+  <div class="auth-page">
+    <div class="auth-box">
+      <div style="text-align:center;margin-bottom:32px;cursor:pointer" onclick="showPage('home')">
+        <div style="font-family:var(--font-display);font-size:24px;font-weight:400;letter-spacing:0.08em">J. Fletcher Art</div>
+      </div>
+      <h1 class="auth-title">Sign In</h1>
+      <p class="auth-sub">Welcome back to your account.</p>
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" required></div>
+        <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password" required></div>
+        <div style="text-align:right;font-size:12px;margin-top:-8px;margin-bottom:16px"><a href="#" style="color:var(--mid-grey)">Forgot password?</a></div>
+        <button class="btn-submit">Sign In</button>
+      </form>
+      <div class="divider">or</div>
+      <button class="btn-continue" onclick="handleLogin(null,'guest')">Continue as Guest</button>
+      <p class="auth-link">Don't have an account? <a href="#" onclick="showPage('account-register')">Create one</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ACCOUNT REGISTER -->
+<div class="page" id="page-account-register">
+  <div class="auth-page">
+    <div class="auth-box">
+      <h1 class="auth-title">Create Account</h1>
+      <p class="auth-sub">Join J. Fletcher Art for exclusive access and order tracking.</p>
+      <form onsubmit="handleRegister(event)">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" required></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" required></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" required></div>
+        <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password" required minlength="8"></div>
+        <div class="form-group"><label class="form-label">Confirm Password</label><input class="form-input" type="password" required></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:20px;font-size:12px;color:var(--mid-grey)">
+          <input type="checkbox" style="margin-top:2px;flex-shrink:0"> Subscribe to newsletter for updates and exclusive offers
+        </div>
+        <button class="btn-submit">Create Account</button>
+      </form>
+      <p class="auth-link">Already have an account? <a href="#" onclick="showPage('account-login')">Sign in</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- WISHLIST PAGE -->
+<div class="page" id="page-wishlist">
+  <div class="page-hero"><h1>Wishlist</h1><p>Works you've saved for later.</p></div>
+  <div class="wishlist-page">
+    <div id="wishlistContent"></div>
+  </div>
+</div>
+
+<!-- SEARCH RESULTS PAGE -->
+<div class="page" id="page-search-results">
+  <div class="search-results-page">
+    <div class="search-results-header">
+      <h1>Search Results</h1>
+      <p id="searchResultsCount">Showing results for "<span id="searchQueryDisplay"></span>"</p>
+    </div>
+    <div class="search-input-bar">
+      <input type="text" id="pageSearchInput" placeholder="Search prints, collections..." onkeydown="pageSearchKeydown(event)">
+      <button onclick="doPageSearch()">&#8594;</button>
+    </div>
+    <div class="products-grid" id="searchResultsGrid"></div>
+  </div>
+</div>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+// ===== DATA =====
+const PRODUCTS = [
+  {id:1,name:'Balanced Stillness',collection:'Nature',edition:'Edition 1/50',price:220,img:'https://i.ibb.co.com/35BqLX52/08-2.png',imgs:['https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80','https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80'],desc:'A study of balance and impermanence. Rocks arranged in perfect equilibrium against still water — a meditation on patience and gravity.',tags:['nature','limited','featured']},
+  {id:2,name:'Summit of Silence',collection:'Nature',edition:'Edition 1/50',price:220,img:'https://i.ibb.co.com/bSgHfb2/07-2.png',imgs:['https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80','https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'],desc:'The mountain at dawn, cloaked in cloud and silence. One of the series most enduring works.',tags:['nature','limited','featured','bestseller']},
+  {id:3,name:'Lone Sentinel',collection:'Nature',edition:'Edition 1/50',price:220,img:'https://i.ibb.co.com/fzXs75vk/04.jpg',imgs:['https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80'],desc:'A solitary tree against a pale winter sky. Stripped to its essence — structure, light, and the passage of seasons.',tags:['nature','limited','featured']},
+  {id:4,name:'Guardian',collection:'Objects',edition:'Edition 1/50',price:220,img:'https://i.ibb.co.com/PG1HS8S4/12.jpg',imgs:['https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&q=80'],desc:'A classical figure in close detail — the weight of history compressed into stone, stillness, and shadow.',tags:['objects','limited','featured','bestseller']},
+  {id:5,name:'Red Serenity',collection:'Nature',edition:'Open Edition',price:220,img:'https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=600&q=80',imgs:['https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80'],desc:'At the edge of day, the world turns warm and quiet.',tags:['nature','bestseller','featured']},
+  {id:6,name:'Urban Geometry',collection:'Urban',edition:'Open Edition',price:220,img:'https://i.ibb.co.com/Qv1LpwJm/02.jpg',imgs:['https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80'],desc:'The city reduced to its formal elements — line, angle, reflection.',tags:['urban','bestseller']},
+  {id:7,name:'Morning Light',collection:'Nature',edition:'Open Edition',price:220,img:'https://i.ibb.co.com/b5cJtGyf/09.jpg',imgs:['https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&q=80'],desc:'First light crossing still water. The day before the world wakes.',tags:['nature','bestseller']},
+  {id:8,name:'Silent Reflections',collection:'Urban',edition:'Open Edition',price:220,img:'https://i.ibb.co.com/RkvTsVQn/11.jpg',imgs:['https://images.unsplash.com/photo-1494783367193-149034c05e8f?w=800&q=80'],desc:'Rain-soaked streets after midnight. The city reflected in glass and water.',tags:['urban','bestseller']},
+  {id:9,name:'Golden Peaks',collection:'Nature',edition:'Open Edition',price:220,img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',imgs:['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'],desc:'Late sun touching high granite. A landscape that asks for nothing.',tags:['nature','bestseller']},
+  {id:10,name:'Timeless Strength',collection:'Objects',edition:'Open Edition',price:220,img:'https://i.ibb.co.com/hFQp7vTD/10.jpg',imgs:['https://images.unsplash.com/photo-1531123414780-f74242c2b052?w=800&q=80'],desc:'Classical form meets photographic light. An object study in permanence.',tags:['objects','bestseller']},
+  {id:11,name:'Quiet Resolve',collection:'Portraits',edition:'Open Edition',price:220,img:'https://i.ibb.co.com/bnZF8CV/01.jpg',imgs:['https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80'],desc:'A portrait of stillness in the middle of the world.',tags:['portraits','featured']},
+  {id:12,name:'Into the Frame',collection:'Urban',edition:'Open Edition',price:220,img:'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80',imgs:['https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80'],desc:'A city caught between purpose and poetry.',tags:['urban']},
+];
+
+const BUNDLES_DATA = [
+  {id:1,name:'Nature Bundle',count:'5 Prints',price:950,imgs:['https://i.ibb.co.com/HDHs0Ff7/15.png','https://i.ibb.co.com/yFPwjRrZ/16.png','https://i.ibb.co.com/cK2QVP5Y/17.png','https://i.ibb.co.com/nN1hXp8z/18.png'],desc:'Five of the most beloved nature prints from the J. Fletcher Art catalogue.'},
+  {id:2,name:'Monochrome Collection',count:'5 Prints',price:950,imgs:['https://i.ibb.co.com/msRy5Qx/19.png','https://i.ibb.co.com/5WnrP0C1/23.png','https://i.ibb.co.com/pB8Nr3Yy/21.png','https://i.ibb.co.com/BHrzF9dv/22.png'],desc:'A curated set in black and white — tonal, stripped, essential.'},
+  {id:3,name:'Storyteller Bundle',count:'5 Prints',price:950,imgs:['https://i.ibb.co.com/bgGm3BTw/20.png','https://i.ibb.co.com/m5hysgxF/24.png','https://i.ibb.co.com/SXTmPQZH/25.png','https://i.ibb.co.com/DH5Mpj7M/26.png'],desc:'Five works that together tell a broader story about the human experience.'},
+];
+
+const FAQS = [
+  {q:'What paper and ink do you use?',a:'All prints are made on archival Hahnemühle Photo Rag 308gsm paper using pigment inks with a 200-year permanence guarantee. We do not offer alternative paper types — this is the standard we believe in.'},
+  {q:'How are the prints packaged?',a:'Prints are wrapped in acid-free tissue, sandwiched between rigid boards, and shipped in a reinforced flat-pack mailer. A3 prints are shipped in a professional tube to ensure they arrive in perfect condition.'},
+  {q:'Do the limited editions come with a certificate?',a:'Yes. Every limited edition print is hand-signed and numbered by J. Fletcher and ships with a certificate of authenticity printed on 300gsm cotton stock.'},
+  {q:'What sizes are available?',a:'All prints are available in three sizes: A5 (148×210mm), A4 (210×297mm), and A3 (297×420mm). Pricing is uniform across all sizes at $220 AUD.'},
+  {q:'How long does shipping take?',a:'Standard Australian shipping takes 3–5 business days. New Zealand is 5–10 days. International orders take 7–21 business days depending on destination.'},
+  {q:'Can I return a print?',a:'Yes, within 14 days of delivery. The print must be returned in its original packaging. Limited editions are non-returnable unless faulty. Contact us before returning any item.'},
+  {q:'Do you do custom commissions?',a:'Selected commission enquiries are accepted. Contact us with your idea and we will let you know if it aligns with J. Fletcher\'s current work.'},
+  {q:'Is framing available?',a:'Prints are sold unframed. We recommend a simple black or white float frame in the corresponding A-size to complement the work.'},
+];
+
+// ===== STATE =====
+let cart = [
+  {id:2,name:'Summit of Silence',size:'A4',price:220,img:'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=200&q=70',qty:1},
+  {id:4,name:'Guardian',size:'A3',price:220,img:'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=200&q=70',qty:1},
+];
+let wishlist = [];
+let currentProduct = null;
+let selectedSize = 'A4';
+let currentSlide = 0;
+let heroInterval;
+const annMessages = ['Free Shipping Across Australia','Secure Checkout · 100% Protected','Museum Quality Prints · Archival Inks'];
+let annIdx = 0;
+
+// ===== PAGE ROUTING =====
+function showPage(page, param) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + page);
+  if (!el) return;
+  el.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  updateHeaderActive(page, param);
+  if (page === 'home') { initHome(); }
+  else if (page === 'collection-category') { initCollectionCategory(param || 'portraits'); }
+  else if (page === 'limited-editions') { initLimitedEditions(); }
+  else if (page === 'best-sellers') { initBestSellers(); }
+  else if (page === 'bundles') { initBundles(); }
+  else if (page === 'bundle-detail') { initBundleDetail(param); }
+  else if (page === 'wishlist') { initWishlist(); }
+  else if (page === 'cart') { initCartPage(); }
+  else if (page === 'checkout') { initCheckout(); }
+  else if (page === 'search-results') { initSearchResults(param); }
+  else if (page === 'faq') { initFAQ(); }
+  else if (page === 'artist-story') { initArtistPage(); }
+}
+
+function updateHeaderActive(page, param) {
+  document.querySelectorAll('.header-nav a').forEach(a => a.classList.remove('active'));
+  const map = {home:'home','collection-category':param,'limited-editions':'limited-editions',bundles:'bundles'};
+  const target = map[page];
+  if (target) {
+    document.querySelectorAll('.header-nav a').forEach(a => {
+      if (a.getAttribute('onclick') && a.getAttribute('onclick').includes("'"+page+"'")) a.classList.add('active');
+    });
+  }
+}
+
+// ===== HERO SLIDER =====
+function initHero() {
+  clearInterval(heroInterval);
+  heroInterval = setInterval(() => heroNav(1), 5000);
+}
+function heroNav(dir) {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + dir + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+function goToSlide(i) {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = i;
+  slides[i].classList.add('active');
+  dots[i].classList.add('active');
+}
+
+// ===== HOME INIT =====
+function initHome() {
+  const limited = PRODUCTS.filter(p => p.tags.includes('limited')).slice(0,4);
+  renderProductGrid('limitedEditionProducts', limited);
+  const best = PRODUCTS.filter(p => p.tags.includes('bestseller')).slice(0,6);
+  renderProductGrid('bestSellersGrid', best, true);
+  renderBundlesGrid('bundlesGrid', false);
+  initHero();
+}
+
+function renderProductGrid(containerId, products, small=false) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = products.map(p => productCardHTML(p, small)).join('');
+}
+
+function productCardHTML(p, small=false) {
+  const wishlisted = wishlist.some(w => w.id === p.id);
+  return `<div class="product-card" onclick="openProduct(${p.id})">
+    <div class="product-card-img">
+      <img src="${p.img}" alt="${p.name}" loading="lazy">
+      <button class="product-card-wishlist ${wishlisted?'wishlisted':''}" onclick="event.stopPropagation();toggleWishlist(${p.id})" aria-label="Wishlist">
+        <svg width="14" height="14" fill="${wishlisted?'#fff':'none'}" stroke="${wishlisted?'#fff':'currentColor'}" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+    </div>
+    <div class="product-edition">${p.edition}</div>
+    <div class="product-name">${p.name}</div>
+    <div class="product-price">From $${p.price}</div>
+    ${!small ? `<button class="product-card-btn" onclick="event.stopPropagation();quickAddToCart(${p.id})">Choose Size</button>` : ''}
+  </div>`;
+}
+
+// ===== COLLECTION CATEGORY =====
+function initCollectionCategory(cat) {
+  const cats = {portraits:{title:'Portraits',desc:'A study of the human form, raw emotion, and inner worlds.'},urban:{title:'Urban',desc:'Architecture, shadow, and the geometry of city life.'},nature:{title:'Nature',desc:'Landscape, light, and the natural world in its many moods.'},objects:{title:'Objects',desc:'Still life and sculptural forms — beauty in the overlooked.'}};
+  const info = cats[cat] || {title:cat.charAt(0).toUpperCase()+cat.slice(1),desc:''};
+  document.getElementById('collCatTitle').textContent = info.title;
+  document.getElementById('collCatDesc').textContent = info.desc;
+  const filtered = PRODUCTS.filter(p => p.tags.includes(cat));
+  document.getElementById('shopCount').textContent = filtered.length + ' Works';
+  renderProductGrid('shopGrid', filtered.length ? filtered : PRODUCTS.slice(0,6));
+}
+
+// ===== LIMITED EDITIONS =====
+function initLimitedEditions() {
+  const limited = PRODUCTS.filter(p => p.tags.includes('limited'));
+  renderProductGrid('limitedEditionsGrid', limited);
+}
+
+// ===== BEST SELLERS =====
+function initBestSellers() {
+  const best = PRODUCTS.filter(p => p.tags.includes('bestseller'));
+  renderProductGrid('bestSellersFullGrid', best);
+}
+
+// ===== BUNDLES =====
+function initBundles() {
+  renderBundlesGrid('bundlesDetailGrid', true);
+}
+function renderBundlesGrid(containerId, detail=true) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = BUNDLES_DATA.map(b => `
+    <div class="bundle-card" onclick="${detail?`showPage('bundle-detail',${b.id})`:`showPage('bundle-detail',${b.id})`}">
+      <div class="bundle-card-imgs">
+        ${b.imgs.map(img => `<img src="${img}" alt="" loading="lazy">`).join('')}
+      </div>
+      <div class="bundle-name">${b.name}</div>
+      <div class="bundle-count">${b.count}</div>
+      <div class="bundle-price">From $${b.price} <span class="bundle-arrow">→</span></div>
+    </div>
+  `).join('');
+}
+
+// ===== BUNDLE DETAIL =====
+function initBundleDetail(id) {
+  const b = BUNDLES_DATA.find(x => x.id == id);
+  if (!b) return;
+  const el = document.getElementById('bundleDetailContent');
+  el.innerHTML = `
+    <div class="bundle-gallery">
+      <div class="bundle-gallery-grid">
+        ${b.imgs.map(img => `<img src="${img}" alt="" loading="lazy">`).join('')}
+      </div>
+    </div>
+    <div class="bundle-info">
+      <p style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:12px">Bundle Collection</p>
+      <h1>${b.name}</h1>
+      <p style="font-size:11px;letter-spacing:0.1em;color:var(--mid-grey);margin-bottom:16px">${b.count} · Curated Set</p>
+      <p style="font-size:13px;line-height:1.8;color:var(--dark-grey);margin-bottom:28px">${b.desc}</p>
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px">What's Included</div>
+      <ul style="padding-left:0;margin-bottom:28px">
+        <li style="font-size:13px;padding:8px 0;border-bottom:1px solid var(--light-grey);list-style:none">5 × Archival Fine Art Prints</li>
+        <li style="font-size:13px;padding:8px 0;border-bottom:1px solid var(--light-grey);list-style:none">5 × Certificates of Authenticity</li>
+        <li style="font-size:13px;padding:8px 0;border-bottom:1px solid var(--light-grey);list-style:none">Protective Archival Packaging</li>
+        <li style="font-size:13px;padding:8px 0;list-style:none">Free Australian Shipping</li>
+      </ul>
+      <div style="font-size:22px;font-weight:300;margin-bottom:20px">From $${b.price} <span style="font-size:13px;color:var(--mid-grey);text-decoration:line-through">$1,100</span></div>
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:360px">
+        <button class="btn-add-cart" onclick="addBundleToCart(${b.id})">Add Bundle to Cart — $${b.price}</button>
+        <button class="btn-wishlist-full">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Save to Wishlist
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+// ===== PRODUCT DETAIL =====
+function openProduct(id) {
+  currentProduct = PRODUCTS.find(p => p.id === id);
+  if (!currentProduct) return;
+  selectedSize = 'A4';
+  renderProductDetail();
+  showPage('product');
+}
+
+function renderProductDetail() {
+  const p = currentProduct;
+  document.getElementById('productBreadcrumbName').textContent = p.name;
+  const el = document.getElementById('productDetail');
+  const related = PRODUCTS.filter(x => x.id !== p.id && x.tags.some(t => p.tags.includes(t))).slice(0,4);
+  el.innerHTML = `
+    <div class="product-gallery">
+      <div class="main-image-wrap">
+        <img src="${p.imgs[0]}" alt="${p.name}" id="mainProductImg">
+      </div>
+      <div class="thumb-row">
+        ${p.imgs.map((img,i) => `<img src="${img}" class="thumb ${i===0?'active':''}" alt="" onclick="switchThumb(this,'${img}')">`).join('')}
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-collection">${p.collection}</p>
+      <h1 class="product-title">${p.name}</h1>
+      <span class="product-edition-badge">${p.edition}</span>
+      <p class="product-desc">${p.desc}</p>
+      <div class="size-selector">
+        <div class="size-label">Print Size</div>
+        <div class="size-options">
+          <button class="size-btn" onclick="selectSize(this,'A5')">A5</button>
+          <button class="size-btn active" onclick="selectSize(this,'A4')">A4</button>
+          <button class="size-btn" onclick="selectSize(this,'A3')">A3</button>
+        </div>
+      </div>
+      <div class="product-price-display" id="productPriceDisplay">$${p.price} AUD</div>
+      <div class="product-actions">
+        <button class="btn-add-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+        <button class="btn-wishlist-full" onclick="toggleWishlist(${p.id})">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Add to Wishlist
+        </button>
+      </div>
+      <div class="product-meta">
+        <div class="meta-row"><span class="meta-label">Medium</span><span class="meta-value">Archival Pigment Print</span></div>
+        <div class="meta-row"><span class="meta-label">Paper</span><span class="meta-value">Hahnemühle Photo Rag 308gsm</span></div>
+        <div class="meta-row"><span class="meta-label">Edition</span><span class="meta-value">${p.edition}</span></div>
+        <div class="meta-row"><span class="meta-label">Includes</span><span class="meta-value">Certificate of Authenticity</span></div>
+        <div class="meta-row"><span class="meta-label">Shipping</span><span class="meta-value">Free within Australia</span></div>
+      </div>
+      <div class="share-row">
+        <span class="share-label">Share</span>
+        <button class="share-btn" onclick="shareProduct('twitter')">&#9670;</button>
+        <button class="share-btn" onclick="shareProduct('facebook')">f</button>
+        <button class="share-btn" onclick="shareProduct('pinterest')">&#9651;</button>
+      </div>
+    </div>
+  `;
+  renderProductGrid('relatedProducts', related);
+}
+
+function switchThumb(el, src) {
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('mainProductImg').src = src;
+}
+function selectSize(el, size) {
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  selectedSize = size;
+}
+function shareProduct(platform) { showToast('Link copied to clipboard!'); }
+
+// ===== CART =====
+function addToCart(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  const existing = cart.find(c => c.id === id && c.size === selectedSize);
+  if (existing) { existing.qty++; }
+  else { cart.push({id:p.id,name:p.name,size:selectedSize,price:p.price,img:p.img,qty:1}); }
+  updateCartCount();
+  renderCartSidebar();
+  openCart();
+  showToast(p.name + ' added to cart');
+}
+function quickAddToCart(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  openProduct(id);
+}
+function addBundleToCart(id) {
+  const b = BUNDLES_DATA.find(x => x.id === id);
+  if (!b) return;
+  cart.push({id:'b'+id,name:b.name,size:'Bundle',price:b.price,img:b.imgs[0],qty:1});
+  updateCartCount();
+  renderCartSidebar();
+  openCart();
+  showToast(b.name + ' added to cart');
+}
+function removeFromCart(idx) {
+  cart.splice(idx,1);
+  updateCartCount();
+  renderCartSidebar();
+  if (document.getElementById('page-cart').classList.contains('active')) initCartPage();
+}
+function changeQty(idx, delta) {
+  cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+  updateCartCount();
+  renderCartSidebar();
+  if (document.getElementById('page-cart').classList.contains('active')) initCartPage();
+}
+function updateCartCount() {
+  const total = cart.reduce((s,c) => s + c.qty, 0);
+  document.getElementById('cartCount').textContent = total;
+  document.getElementById('mobileCartCount').textContent = total;
+}
+function renderCartSidebar() {
+  const el = document.getElementById('cartItems');
+  if (cart.length === 0) {
+    el.innerHTML = '<div class="cart-empty"><p>Your cart is empty.</p><button class="btn-primary" style="margin:0 auto;background:var(--black);color:var(--white)" onclick="closeCart();showPage(\'collections\')">Browse Prints</button></div>';
+  } else {
+    el.innerHTML = cart.map((item,i) => `
+      <div class="cart-item">
+        <img src="${item.img}" alt="${item.name}">
+        <div class="cart-item-info">
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-meta">${item.size} · Open Edition</div>
+          <div class="cart-item-qty">
+            <button class="qty-btn" onclick="changeQty(${i},-1)">−</button>
+            <span class="qty-val">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${i},1)">+</button>
+          </div>
+          <button class="cart-item-remove" onclick="removeFromCart(${i})">Remove</button>
+        </div>
+        <div class="cart-item-price">$${item.price * item.qty}</div>
+      </div>
+    `).join('');
+  }
+  renderCartTotals('cartTotals');
+}
+function renderCartTotals(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const subtotal = cart.reduce((s,c) => s + c.price * c.qty, 0);
+  const shipping = subtotal > 0 ? 0 : 0;
+  const total = subtotal + shipping;
+  el.innerHTML = `
+    <div class="cart-total-row"><span>Subtotal</span><span>$${subtotal}</span></div>
+    <div class="cart-total-row"><span>Shipping</span><span>${shipping === 0 ? 'Free' : '$'+shipping}</span></div>
+    <div class="cart-total-row total"><span>Total</span><span>$${total} AUD</span></div>
+  `;
+}
+function openCart() {
+  renderCartSidebar();
+  document.getElementById('cartSidebar').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+  document.getElementById('cartSidebar').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function applyCoupon() {
+  const val = document.getElementById('couponInput')?.value || document.getElementById('cartPageCoupon')?.value || '';
+  if (val.toUpperCase() === 'FLETCHER10') { showToast('10% discount applied!'); }
+  else if (val) { showToast('Invalid coupon code'); }
+}
+function initCartPage() {
+  const el = document.getElementById('cartPageItems');
+  if (!el) return;
+  if (cart.length === 0) {
+    el.innerHTML = '<div class="cart-empty" style="text-align:center;padding:60px 0"><p style="color:var(--mid-grey);margin-bottom:20px">Your cart is empty.</p><button class="btn-primary" style="background:var(--black);color:var(--white);padding:12px 28px" onclick="showPage(\'collections\')">Browse Prints</button></div>';
+  } else {
+    el.innerHTML = `<table style="width:100%;border-collapse:collapse">
+      <thead><tr style="border-bottom:2px solid var(--black);font-size:11px;letter-spacing:0.1em;text-transform:uppercase">
+        <th style="padding:12px 0;text-align:left">Product</th>
+        <th style="padding:12px 0">Size</th>
+        <th style="padding:12px 0">Quantity</th>
+        <th style="padding:12px 0;text-align:right">Total</th>
+      </tr></thead>
+      <tbody>
+        ${cart.map((item,i) => `<tr style="border-bottom:1px solid var(--light-grey)">
+          <td style="padding:16px 0;display:flex;gap:14px;align-items:center">
+            <img src="${item.img}" style="width:72px;height:72px;object-fit:cover">
+            <div><div style="font-size:14px;font-weight:500">${item.name}</div></div>
+          </td>
+          <td style="text-align:center;font-size:13px">${item.size}</td>
+          <td style="text-align:center">
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px">
+              <button class="qty-btn" onclick="changeQty(${i},-1)">−</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${i},1)">+</button>
+            </div>
+          </td>
+          <td style="text-align:right;font-size:14px;font-weight:500">$${item.price * item.qty}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>`;
+  }
+  renderCartTotals('cartPageTotals');
+}
+
+// ===== CHECKOUT =====
+function initCheckout() {
+  const el = document.getElementById('checkoutItems');
+  if (el) el.innerHTML = cart.map(item => `
+    <div class="checkout-item">
+      <img src="${item.img}" alt="${item.name}">
+      <div><div class="checkout-item-name">${item.name}</div><div class="checkout-item-meta">${item.size}</div></div>
+      <div class="checkout-item-price">$${item.price * item.qty}</div>
+    </div>
+  `).join('');
+  renderCartTotals('checkoutTotals');
+}
+function placeOrder() {
+  if (!document.getElementById('termsCheck').checked) {
+    showToast('Please accept the terms & conditions');
+    return;
+  }
+  const orderNum = 'JFA-2025-' + Math.floor(1000 + Math.random() * 9000);
+  document.getElementById('orderNumber').textContent = orderNum;
+  cart = [];
+  updateCartCount();
+  showPage('order-confirmation');
+}
+
+// ===== WISHLIST =====
+function toggleWishlist(id) {
+  const idx = wishlist.findIndex(w => w.id === id);
+  if (idx > -1) {
+    wishlist.splice(idx, 1);
+    showToast('Removed from wishlist');
+  } else {
+    const p = PRODUCTS.find(x => x.id === id);
+    if (p) { wishlist.push(p); showToast('Added to wishlist'); }
+  }
+  document.querySelectorAll(`.product-card-wishlist`).forEach(btn => {
+    const pid = parseInt(btn.getAttribute('onclick')?.match(/\d+/)?.[0]);
+    const isWished = wishlist.some(w => w.id === pid);
+    btn.classList.toggle('wishlisted', isWished);
+  });
+}
+function initWishlist() {
+  const el = document.getElementById('wishlistContent');
+  if (!el) return;
+  if (wishlist.length === 0) {
+    el.innerHTML = '<div style="text-align:center;padding:80px 0"><p style="color:var(--mid-grey);margin-bottom:20px">Your wishlist is empty.</p><button class="btn-primary" style="background:var(--black);color:var(--white);padding:12px 28px;margin:0 auto" onclick="showPage(\'collections\')">Discover Prints</button></div>';
+  } else {
+    el.innerHTML = `<div class="wishlist-grid">${wishlist.map(p => productCardHTML(p)).join('')}</div>`;
+  }
+}
+
+// ===== SEARCH =====
+function openSearch() {
+  document.getElementById('searchOverlay').classList.add('open');
+  document.getElementById('searchInput').focus();
+  document.body.style.overflow = 'hidden';
+}
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeSearchOnBg(e) { if (e.target === e.currentTarget) closeSearch(); }
+function doSearch(query) {
+  const container = document.getElementById('searchResultsContainer');
+  const hint = document.getElementById('searchHint');
+  if (!query || query.length < 2) { container.innerHTML = ''; hint.style.display = 'block'; return; }
+  hint.style.display = 'none';
+  const results = PRODUCTS.filter(p =>
+    p.name.toLowerCase().includes(query.toLowerCase()) ||
+    p.collection.toLowerCase().includes(query.toLowerCase()) ||
+    p.tags.some(t => t.includes(query.toLowerCase()))
+  );
+  container.innerHTML = results.length
+    ? results.map(p => `<div class="search-result-item" onclick="closeSearch();openProduct(${p.id})">
+        <img src="${p.img}" alt="${p.name}">
+        <div class="search-result-info"><p>${p.name}</p><span>${p.collection} · From $${p.price}</span></div>
+      </div>`).join('')
+    : '<p style="opacity:0.5;font-size:13px">No results found. Try a different term.</p>';
+}
+function searchKeydown(e) {
+  if (e.key === 'Escape') closeSearch();
+  if (e.key === 'Enter') {
+    const q = e.target.value;
+    if (q.length > 1) { closeSearch(); initSearchResults(q); showPage('search-results', q); }
+  }
+}
+function initSearchResults(query) {
+  document.getElementById('searchQueryDisplay').textContent = query || '';
+  document.getElementById('pageSearchInput').value = query || '';
+  const results = query
+    ? PRODUCTS.filter(p => p.name.toLowerCase().includes(query.toLowerCase()) || p.collection.toLowerCase().includes(query.toLowerCase()) || p.tags.some(t => t.includes(query.toLowerCase())))
+    : PRODUCTS;
+  document.getElementById('searchResultsCount').innerHTML = `Showing ${results.length} result${results.length !== 1 ? 's' : ''} for "<strong>${query}</strong>"`;
+  renderProductGrid('searchResultsGrid', results);
+}
+function doPageSearch() {
+  const q = document.getElementById('pageSearchInput').value;
+  initSearchResults(q);
+}
+function pageSearchKeydown(e) { if (e.key === 'Enter') doPageSearch(); }
+
+// ===== FAQ =====
+function initFAQ() {
+  const el = document.getElementById('faqList');
+  if (!el) return;
+  el.innerHTML = FAQS.map((f,i) => `
+    <div class="faq-item" id="faq${i}">
+      <div class="faq-q" onclick="toggleFAQ(${i})">
+        <span>${f.q}</span><span>+</span>
+      </div>
+      <div class="faq-a">${f.a}</div>
+    </div>
+  `).join('');
+}
+function toggleFAQ(i) {
+  const item = document.getElementById('faq' + i);
+  item.classList.toggle('open');
+}
+
+// ===== ARTIST PAGE =====
+function initArtistPage() {
+  renderProductGrid('artistFeaturedGrid', PRODUCTS.filter(p => p.tags.includes('featured')).slice(0,4));
+}
+
+// ===== ACCOUNT =====
+function handleLogin(e, mode) {
+  if (e) e.preventDefault();
+  showToast('Signed in successfully');
+  showPage('home');
+}
+function handleRegister(e) {
+  e.preventDefault();
+  showToast('Account created! Welcome to J. Fletcher Art.');
+  showPage('home');
+}
+
+// ===== FORMS =====
+function subscribeNewsletter(e) {
+  e.preventDefault();
+  showToast('You\'re subscribed! Welcome to the J. Fletcher Art community.');
+  e.target.reset();
+}
+function submitContact(e) {
+  e.preventDefault();
+  showToast('Message sent! We\'ll be in touch within 1–2 business days.');
+  e.target.reset();
+}
+
+// ===== MOBILE MENU =====
+function openMobileMenu() {
+  document.getElementById('mobileMenu').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ===== TOAST =====
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timeout);
+  t._timeout = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ===== SORT =====
+function sortProducts(val) {
+  const grid = document.getElementById('shopGrid');
+  if (!grid) return;
+  const activePage = document.querySelector('.page.active');
+  const currentCat = document.getElementById('collCatTitle')?.textContent?.toLowerCase() || '';
+  let prods = PRODUCTS.filter(p => p.tags.includes(currentCat) || currentCat === '');
+  if (val.includes('Low to High')) prods.sort((a,b) => a.price - b.price);
+  else if (val.includes('High to Low')) prods.sort((a,b) => b.price - a.price);
+  grid.innerHTML = prods.map(p => productCardHTML(p)).join('');
+}
+
+// ===== ANNOUNCEMENT BAR =====
+function nextAnn() {
+  annIdx = (annIdx + 1) % annMessages.length;
+  document.querySelector('.announcement-text').innerHTML = `<span>${annMessages[annIdx]}</span>`;
+}
+function prevAnn() {
+  annIdx = (annIdx - 1 + annMessages.length) % annMessages.length;
+  document.querySelector('.announcement-text').innerHTML = `<span>${annMessages[annIdx]}</span>`;
+}
+
+// ===== LAZY LOAD =====
+function initLazyLoad() {
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('loaded'); obs.unobserve(e.target); } });
+    }, {threshold:0.1});
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => { img.classList.add('lazy'); obs.observe(img); });
+  }
+}
+
+// ===== STICKY HEADER =====
+function initStickyHeader() {
+  const header = document.getElementById('siteHeader');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const curr = window.pageYOffset;
+    if (curr > 100 && curr > lastScroll) { header.style.transform = 'translateY(-100%)'; }
+    else { header.style.transform = 'translateY(0)'; }
+    lastScroll = curr;
+  }, {passive:true});
+  header.style.transition = 'transform 0.3s ease';
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  initHome();
+  initLazyLoad();
+  initStickyHeader();
+  updateCartCount();
+  
+  // Keyboard shortcuts
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeSearch();
+      closeCart();
+      closeMobileMenu();
+    }
+  });
+  
+  // Input security: basic sanitization
+  document.querySelectorAll('input, textarea').forEach(input => {
+    input.addEventListener('input', function() {
+      if (this.type !== 'password') {
+        this.value = this.value.replace(/<script/gi, '');
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
